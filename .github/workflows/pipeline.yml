@@ -38,9 +38,10 @@ jobs:
           git status
         
       - name: Commit updated files
-        id: commit-changelog
         run: |
           git add */**/README.md
           git commit --message "Created or updated README.md files"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
