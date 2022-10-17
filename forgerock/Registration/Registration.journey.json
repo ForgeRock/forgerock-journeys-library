@@ -1,10 +1,11 @@
 {
   "meta": {
     "origin": "https://openam-frodo-dev.forgeblocks.com/am",
+    "originAmVersion": "7.3.0",
     "exportedBy": "volker.scheuber@forgerock.com",
-    "exportDate": "2022-06-20T17:54:08.859Z",
+    "exportDate": "2022-10-17T04:24:11.326Z",
     "exportTool": "frodo",
-    "exportToolVersion": "v0.6.1 [v18.2.0]"
+    "exportToolVersion": "v0.15.2 [v18.7.0]"
   },
   "innerNodes": {
     "7fcaf48e-a754-4959-858b-05b2933b825f": {
@@ -68,10 +69,11 @@
     },
     "120c69d3-90b4-4ad4-b7af-380e8b119340": {
       "_id": "120c69d3-90b4-4ad4-b7af-380e8b119340",
-      "_rev": "-1607497240",
+      "_rev": "-8134977",
       "message": {
         "en": "Select a security question"
       },
+      "allowUserDefinedQuestions": true,
       "_type": {
         "_id": "KbaCreateNode",
         "name": "KBA Definition",
@@ -194,7 +196,7 @@
   "circlesOfTrust": {},
   "tree": {
     "_id": "Registration",
-    "_rev": "1897687361",
+    "_rev": "288094415",
     "identityResource": "managed/alpha_user",
     "uiConfig": {
       "categories": "[\"Registration\"]"
@@ -244,6 +246,7 @@
         "x": 50,
         "y": 25
       }
-    }
+    },
+    "enabled": true
   }
 }

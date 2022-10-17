@@ -1,10 +1,11 @@
 {
   "meta": {
     "origin": "https://openam-frodo-dev.forgeblocks.com/am",
+    "originAmVersion": "7.3.0",
     "exportedBy": "volker.scheuber@forgerock.com",
-    "exportDate": "2022-06-20T17:54:10.100Z",
+    "exportDate": "2022-10-17T04:21:30.658Z",
     "exportTool": "frodo",
-    "exportToolVersion": "v0.6.1 [v18.2.0]"
+    "exportToolVersion": "v0.15.2 [v18.7.0]"
   },
   "innerNodes": {
     "9f1e8d94-4922-481b-9e14-212b66548900": {
@@ -151,7 +152,7 @@
   "circlesOfTrust": {},
   "tree": {
     "_id": "ForgottenUsername",
-    "_rev": "-1762040244",
+    "_rev": "923334106",
     "identityResource": "managed/alpha_user",
     "uiConfig": {
       "categories": "[\"Username Reset\"]"
@@ -211,6 +212,7 @@
         "x": 50,
         "y": 25
       }
-    }
+    },
+    "enabled": true
   }
 }

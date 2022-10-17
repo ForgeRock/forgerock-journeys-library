@@ -1,10 +1,11 @@
 {
   "meta": {
     "origin": "https://openam-frodo-dev.forgeblocks.com/am",
+    "originAmVersion": "7.3.0",
     "exportedBy": "volker.scheuber@forgerock.com",
-    "exportDate": "2022-06-20T17:54:09.682Z",
+    "exportDate": "2022-10-17T04:23:11.482Z",
     "exportTool": "frodo",
-    "exportToolVersion": "v0.6.1 [v18.2.0]"
+    "exportToolVersion": "v0.15.2 [v18.7.0]"
   },
   "innerNodes": {
     "0a042e10-b22e-4e02-86c4-65e26e775f7a": {
@@ -132,7 +133,7 @@
   "circlesOfTrust": {},
   "tree": {
     "_id": "ProgressiveProfile",
-    "_rev": "1342496803",
+    "_rev": "-267096143",
     "identityResource": "managed/alpha_user",
     "uiConfig": {
       "categories": "[\"Progressive Profile\"]"
@@ -193,6 +194,7 @@
         "x": 50,
         "y": 58.5
       }
-    }
+    },
+    "enabled": true
   }
 }
