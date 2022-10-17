@@ -1,0 +1,46 @@
+name: Journey Library CI Pipeline
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # generate README.md for journey files
+  readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install frodo-cli
+        run: |
+          npm i -g @rockcarver/frodo-cli
+          frodo -v
+
+      - name: Generate README.md files
+        run: |
+          find . -name "*.journey.json" -exec sh -c 'frodo journey describe -f "$0" --markdown --output-file "${0%/*}/README.md"' {} \;
+        
+      - name: Show changes
+        run: |
+          git status
+        
+      - name: Commit updated files
+        id: commit-changelog
+        run: |
+          git add */**/README.md
+          git commit --message "Created or updated README.md files"
+          git push
+          
