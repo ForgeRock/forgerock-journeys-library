@@ -44,5 +44,6 @@ jobs:
           git config user.email "vscheuber@gmail.com"
           git add */**/README.md
           git commit --message "Created or updated README.md files"
-          git push 
+          echo "commit successful"
+          git push origin ${{ github.head_ref }}
           
