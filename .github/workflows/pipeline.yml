@@ -39,6 +39,7 @@ jobs:
         
       - name: Commit updated files
         run: |
+          echo ${{ github.base_ref }}
           git config user.name "vscheuber"
           git config user.email "vscheuber@gmail.com"
           git add */**/README.md
