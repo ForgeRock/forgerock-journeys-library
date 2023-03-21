@@ -37,12 +37,16 @@ jobs:
         run: |
           git status
         
-      - name: Commit updated files
-        run: |
-          echo ${{ github.base_ref }}
-          git config user.name "vscheuber"
-          git config user.email "vscheuber@gmail.com"
-          git add */**/README.md
-          git commit --message "Created or updated README.md files"
-          git push
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Added or updated Reamdme files"
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          labels: automated-pr
+          team-reviewers: |
+            owners
+            maintainers
           
