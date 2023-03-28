@@ -33,7 +33,7 @@ community
 9. Following the exact naming convention will kick in the GitHub Action to generate Readme files for your journey and add it to your PR once opened.
 10. Drag and drop your journey file in the code box below.
 
-![image](https://user-images.githubusercontent.com/33761166/228278802-726dfe9c-fb48-407b-8725-0f64449cdc36.png)
+![image](https://user-images.githubusercontent.com/33761166/228279858-eceac83e-c372-4d2e-a72d-ddaf1919ac7e.png)
 
 12. Add a commit message and a description for your journey file.
 13. Remember to select “Create a new branch for this commit and start a pull request”.
