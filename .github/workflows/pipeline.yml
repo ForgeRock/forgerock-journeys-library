@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -14,21 +14,21 @@ jobs:
   # generate README.md for journey files
   readme:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+        
       - name: install node
         uses: actions/setup-node@v3
         with:
           node-version: 14
-
+          
       - name: Install frodo-cli
         run: |
           npm i -g @rockcarver/frodo-cli
           frodo -v
-
+          
       - name: Generate README.md files
         run: |
           find . -name "*.journey.json" -exec sh -c 'frodo journey describe -f "$0" --markdown --output-file "${0%/*}/README.md"' {} \;
@@ -37,13 +37,6 @@ jobs:
         run: |
           git status
         
-      - name: Commit updated files
-        run: |
-          echo ${{ github.head_ref }}
-          git config user.name "vscheuber"
-          git config user.email "vscheuber@gmail.com"
-          git add */**/README.md
-          git commit --message "Created or updated README.md files"
-          echo "commit successful"
-          git push origin ${{ github.head_ref }}
-          
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update readme files
