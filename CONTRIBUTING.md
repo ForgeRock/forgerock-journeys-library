@@ -1,4 +1,3 @@
-**Journeys contribution guide**
 
 **Contributing from the GitHub UI**
 
