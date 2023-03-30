@@ -40,7 +40,7 @@ community
 
 12. Add a commit message and a description for your journey file.
 
-![image](https://user-images.githubusercontent.com/33761166/228279134-2328e2d8-c5ab-49d4-adb7-87d14d231f5d.png)
+![image](https://user-images.githubusercontent.com/33761166/228924212-42a7e9fc-bc1d-432d-adeb-cf6cd91a959e.png)
 
 15. Click on the green “Propose new file” button.
 16. Give a title and description for your pull request if you haven’t already. This information will make the review process easier.
