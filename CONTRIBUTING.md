@@ -4,7 +4,7 @@
 ## Video tutorial: How to contribute 
 
 
-https://user-images.githubusercontent.com/33761166/228339438-7d163f5c-ae00-461c-a77a-13bcae03ab31.mov
+https://user-images.githubusercontent.com/33761166/228923412-2fc1fb5e-74c8-4426-bfda-0f58fbc0dd65.mov
 
 
 1. Follow the below folder structure when contributing to this repository.
@@ -39,7 +39,6 @@ community
 ![image](https://user-images.githubusercontent.com/33761166/228279858-eceac83e-c372-4d2e-a72d-ddaf1919ac7e.png)
 
 12. Add a commit message and a description for your journey file.
-13. Remember to select “Create a new branch for this commit and start a pull request”.
 
 ![image](https://user-images.githubusercontent.com/33761166/228279134-2328e2d8-c5ab-49d4-adb7-87d14d231f5d.png)
 
