@@ -1,11 +1,13 @@
 
-**Contributing from the GitHub UI**
+# Contributing from the GitHub UI
 
 ## Video tutorial: How to contribute 
 
 
 https://user-images.githubusercontent.com/33761166/228923412-2fc1fb5e-74c8-4426-bfda-0f58fbc0dd65.mov
 
+
+## Step by step procedure to contribute journey to this repository
 
 1. Follow the below folder structure when contributing to this repository.
 2. If a folder for your journey category or a folder for your username does not exist, please create folders in the structure depicted below. 
