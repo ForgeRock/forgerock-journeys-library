@@ -1,0 +1,1053 @@
+{
+  "meta": {
+    "origin": "https://example.forgeblocks.com/platform/?realm=alpha#/journeys/Social%20Login%20-%20sample%20journey",
+    "exportedBy": "example@forgerock.com",
+    "exportDate": "2023-03-20T13:39:52.364Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "Social Login - sample journey"
+    ],
+    "innerTreesIncluded": [
+      "ProgressiveProfile"
+    ]
+  },
+  "trees": {
+    "ProgressiveProfile": {
+      "tree": {
+        "_id": "ProgressiveProfile",
+        "_rev": "-267096143",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[\"Progressive Profile\"]"
+        },
+        "entryNodeId": "8afdaec3-275e-4301-bb53-34f03e6a4b29",
+        "nodes": {
+          "423a959a-a1b9-498a-b0f7-596b6b6e775a": {
+            "connections": {
+              "FAILURE": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "PATCHED": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Patch Object",
+            "nodeType": "PatchObjectNode",
+            "x": 766,
+            "y": 36
+          },
+          "8afdaec3-275e-4301-bb53-34f03e6a4b29": {
+            "connections": {
+              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "true": "a1f45b44-5bf7-4c57-aa3f-75c619c7db8e"
+            },
+            "displayName": "Login Count Decision",
+            "nodeType": "LoginCountDecisionNode",
+            "x": 152,
+            "y": 36
+          },
+          "a1f45b44-5bf7-4c57-aa3f-75c619c7db8e": {
+            "connections": {
+              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "true": "a5aecad8-854a-4ed5-b719-ff6c90e858c0"
+            },
+            "displayName": "Query Filter Decision",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 357,
+            "y": 36
+          },
+          "a5aecad8-854a-4ed5-b719-ff6c90e858c0": {
+            "connections": {
+              "outcome": "423a959a-a1b9-498a-b0f7-596b6b6e775a"
+            },
+            "displayName": "Page Node",
+            "nodeType": "PageNode",
+            "x": 555,
+            "y": 20
+          }
+        },
+        "description": "Prompt for missing preferences on 3rd login",
+        "staticNodes": {
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 802,
+            "y": 312
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 919,
+            "y": 171
+          },
+          "startNode": {
+            "x": 50,
+            "y": 58.5
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "423a959a-a1b9-498a-b0f7-596b6b6e775a": {
+          "_id": "423a959a-a1b9-498a-b0f7-596b6b6e775a",
+          "_rev": "1288219125",
+          "identityResource": "managed/alpha_user",
+          "patchAsObject": false,
+          "ignoredFields": [],
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "PatchObjectNode",
+            "name": "Patch Object",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "PATCHED",
+              "displayName": "Patched"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
+        "8afdaec3-275e-4301-bb53-34f03e6a4b29": {
+          "_id": "8afdaec3-275e-4301-bb53-34f03e6a4b29",
+          "_rev": "-1679047423",
+          "interval": "AT",
+          "identityAttribute": "userName",
+          "amount": 3,
+          "_type": {
+            "_id": "LoginCountDecisionNode",
+            "name": "Login Count Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "a1f45b44-5bf7-4c57-aa3f-75c619c7db8e": {
+          "_id": "a1f45b44-5bf7-4c57-aa3f-75c619c7db8e",
+          "_rev": "-1852493841",
+          "identityAttribute": "userName",
+          "queryFilter": "!(/preferences pr) or /preferences/marketing eq false or /preferences/updates eq false",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "a5aecad8-854a-4ed5-b719-ff6c90e858c0": {
+          "_id": "a5aecad8-854a-4ed5-b719-ff6c90e858c0",
+          "_rev": "380010937",
+          "nodes": [
+            {
+              "_id": "0a042e10-b22e-4e02-86c4-65e26e775f7a",
+              "nodeType": "AttributeCollectorNode",
+              "displayName": "Attribute Collector"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Please select your preferences"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "0a042e10-b22e-4e02-86c4-65e26e775f7a": {
+          "_id": "0a042e10-b22e-4e02-86c4-65e26e775f7a",
+          "_rev": "-1210529544",
+          "attributesToCollect": [
+            "preferences/updates",
+            "preferences/marketing"
+          ],
+          "identityAttribute": "userName",
+          "validateInputs": false,
+          "required": false,
+          "_type": {
+            "_id": "AttributeCollectorNode",
+            "name": "Attribute Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    },
+    "Social Login - sample journey": {
+      "tree": {
+        "_id": "Social Login - sample journey",
+        "_rev": "-310540872",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[]"
+        },
+        "entryNodeId": "3e40d584-057d-477c-9423-f6314979c0a6",
+        "nodes": {
+          "18c9323c-8511-40cf-8eaa-43b936f53215": {
+            "x": 767.828125,
+            "y": 607.015625,
+            "connections": {
+              "false": "95d727d7-cab4-40bf-a58e-bb837e6f53a4",
+              "true": "4b4c6d28-a179-4f6f-90eb-d52602df12ad"
+            },
+            "nodeType": "RequiredAttributesDecisionNode",
+            "displayName": "Required Attributes Present"
+          },
+          "3e40d584-057d-477c-9423-f6314979c0a6": {
+            "x": 235,
+            "y": 135.015625,
+            "connections": {
+              "localAuthentication": "dfbaea60-ecfa-4424-b765-ab0fae6950cc",
+              "socialAuthentication": "21484ab8-9fff-4e48-bea1-8174047a9b28"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "868b229f-3ae9-47fd-8f66-5f084b197ed5": {
+            "x": 501,
+            "y": 446.015625,
+            "connections": {
+              "Cancel": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Proceed": "0421ae5c-875f-4da9-b299-4d085e93431a"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "Matched on Existing"
+          },
+          "13372410-44ed-4ac9-96fa-7e54f58aee19": {
+            "x": 1673,
+            "y": 87.015625,
+            "connections": {
+              "FAILURE": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "PATCHED": "158b2972-b341-4f9c-a342-6f3f1d23b04e"
+            },
+            "nodeType": "PatchObjectNode",
+            "displayName": "Patch Object"
+          },
+          "7e4e2652-e482-41f6-b162-ef829788a8a8": {
+            "x": 478,
+            "y": 310.015625,
+            "connections": {
+              "false": "2a9ad8cf-c479-4bf4-88d2-030b6b1ac448",
+              "true": "868b229f-3ae9-47fd-8f66-5f084b197ed5"
+            },
+            "nodeType": "IdentifyExistingUserNode",
+            "displayName": "Identify Existing User"
+          },
+          "0421ae5c-875f-4da9-b299-4d085e93431a": {
+            "x": 769,
+            "y": 454.015625,
+            "connections": {
+              "Cancel": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Password": "7428ce28-fbd5-4125-b04c-d745f3951999"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "Choice Collector"
+          },
+          "2a9ad8cf-c479-4bf4-88d2-030b6b1ac448": {
+            "x": 518,
+            "y": 595.015625,
+            "connections": {
+              "Cancel": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Proceed": "18c9323c-8511-40cf-8eaa-43b936f53215"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "No Match - Create"
+          },
+          "4b4c6d28-a179-4f6f-90eb-d52602df12ad": {
+            "x": 1326,
+            "y": 463.015625,
+            "connections": {
+              "CREATED": "31d948b7-6fc4-436d-9ddb-fc0979943213",
+              "FAILURE": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "CreateObjectNode",
+            "displayName": "Create Object"
+          },
+          "dfbaea60-ecfa-4424-b765-ab0fae6950cc": {
+            "x": 501.828125,
+            "y": 886.015625,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "158b2972-b341-4f9c-a342-6f3f1d23b04e"
+            },
+            "nodeType": "DataStoreDecisionNode",
+            "displayName": "Data Store Decision"
+          },
+          "7428ce28-fbd5-4125-b04c-d745f3951999": {
+            "x": 992,
+            "y": 106.015625,
+            "connections": {
+              "outcome": "a3da098a-a2c9-433e-9ec7-69cf2968574e"
+            },
+            "nodeType": "ValidatedPasswordNode",
+            "displayName": "Platform Password"
+          },
+          "d7497f9d-e9d8-4dd4-9680-111a6d100639": {
+            "x": 1036,
+            "y": 319.015625,
+            "connections": {
+              "Reject": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Retry": "7428ce28-fbd5-4125-b04c-d745f3951999"
+            },
+            "nodeType": "RetryLimitDecisionNode",
+            "displayName": "Retry Limit Decision"
+          },
+          "a3da098a-a2c9-433e-9ec7-69cf2968574e": {
+            "x": 1247,
+            "y": 78.015625,
+            "connections": {
+              "false": "d7497f9d-e9d8-4dd4-9680-111a6d100639",
+              "true": "13372410-44ed-4ac9-96fa-7e54f58aee19"
+            },
+            "nodeType": "DataStoreDecisionNode",
+            "displayName": "Data Store Decision"
+          },
+          "b5d05b99-8cdd-4085-8e65-cba6dd22d880": {
+            "x": 1891,
+            "y": 752.015625,
+            "connections": {
+              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "InnerTreeEvaluatorNode",
+            "displayName": "Inner Tree Evaluator"
+          },
+          "21484ab8-9fff-4e48-bea1-8174047a9b28": {
+            "x": 475,
+            "y": 41.015625,
+            "connections": {
+              "ACCOUNT_EXISTS": "b76624fc-ee48-41d0-871f-8d740bbcd7d4",
+              "NO_ACCOUNT": "7e4e2652-e482-41f6-b162-ef829788a8a8"
+            },
+            "nodeType": "SocialProviderHandlerNode",
+            "displayName": "Social Provider Handler Node"
+          },
+          "158b2972-b341-4f9c-a342-6f3f1d23b04e": {
+            "x": 1622,
+            "y": 773.015625,
+            "connections": {
+              "outcome": "b5d05b99-8cdd-4085-8e65-cba6dd22d880"
+            },
+            "nodeType": "IncrementLoginCountNode",
+            "displayName": "Increment Login Count"
+          },
+          "95d727d7-cab4-40bf-a58e-bb837e6f53a4": {
+            "x": 1099.703125,
+            "y": 668.015625,
+            "connections": {
+              "outcome": "4b4c6d28-a179-4f6f-90eb-d52602df12ad"
+            },
+            "nodeType": "AttributeCollectorNode",
+            "displayName": "Attribute Collector"
+          },
+          "b76624fc-ee48-41d0-871f-8d740bbcd7d4": {
+            "x": 486,
+            "y": 167.015625,
+            "connections": {
+              "Cancel": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Proceed": "158b2972-b341-4f9c-a342-6f3f1d23b04e"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "Existing Social Link"
+          },
+          "31d948b7-6fc4-436d-9ddb-fc0979943213": {
+            "x": 1536,
+            "y": 476.015625,
+            "connections": {
+              "No, not now": "158b2972-b341-4f9c-a342-6f3f1d23b04e",
+              "Yes, please continue": "bade494a-4514-43dc-9ab7-b54b523d22fa"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "Provide Local Credentials?"
+          },
+          "bade494a-4514-43dc-9ab7-b54b523d22fa": {
+            "x": 1886,
+            "y": 479.015625,
+            "connections": {
+              "outcome": "13372410-44ed-4ac9-96fa-7e54f58aee19"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Platform Password"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 50,
+            "y": 250
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 2003,
+            "y": 927
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1317,
+            "y": 886
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "18c9323c-8511-40cf-8eaa-43b936f53215": {
+          "_id": "18c9323c-8511-40cf-8eaa-43b936f53215",
+          "_rev": "-1732011057",
+          "identityResource": "managed/alpha_user",
+          "_type": {
+            "_id": "RequiredAttributesDecisionNode",
+            "name": "Required Attributes Present",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "3e40d584-057d-477c-9423-f6314979c0a6": {
+          "_id": "3e40d584-057d-477c-9423-f6314979c0a6",
+          "_rev": "-1672486439",
+          "nodes": [
+            {
+              "_id": "a846cfb9-a842-4de2-bd70-ccc564e55ff3",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "0c6d1a95-b8c1-4961-8c89-6ed7520ea925",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            },
+            {
+              "_id": "3b9a699d-67e0-49af-bce0-18c44761927a",
+              "nodeType": "SelectIdPNode",
+              "displayName": "Select Identity Provider"
+            }
+          ],
+          "pageDescription": {
+            "en": "New here? <a href=\\\"#/service/Registration\\\">Create an account</a><br><a href=\\\"#/service/ForgottenUsername\\\">Forgot username?</a><a href=\\\"#/service/ResetPassword\\\"> Forgot password?</a><br>Provide Username and Password or select your own Identity Provider!"
+          },
+          "pageHeader": {
+            "en": "Sign in"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "socialAuthentication",
+              "displayName": "Social Authentication"
+            },
+            {
+              "id": "localAuthentication",
+              "displayName": "Local Authentication"
+            }
+          ]
+        },
+        "868b229f-3ae9-47fd-8f66-5f084b197ed5": {
+          "_id": "868b229f-3ae9-47fd-8f66-5f084b197ed5",
+          "_rev": "-173951562",
+          "defaultChoice": "Proceed",
+          "choices": [
+            "Proceed",
+            "Cancel"
+          ],
+          "prompt": "No Social but match on email - prove you own it",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Proceed",
+              "displayName": "Proceed"
+            },
+            {
+              "id": "Cancel",
+              "displayName": "Cancel"
+            }
+          ]
+        },
+        "13372410-44ed-4ac9-96fa-7e54f58aee19": {
+          "_id": "13372410-44ed-4ac9-96fa-7e54f58aee19",
+          "_rev": "1696775062",
+          "identityResource": "managed/alpha_user",
+          "patchAsObject": false,
+          "ignoredFields": [
+            "mail",
+            "givenName",
+            "sn",
+            "userName"
+          ],
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "PatchObjectNode",
+            "name": "Patch Object",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "PATCHED",
+              "displayName": "Patched"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
+        "7e4e2652-e482-41f6-b162-ef829788a8a8": {
+          "_id": "7e4e2652-e482-41f6-b162-ef829788a8a8",
+          "_rev": "-726622869",
+          "identityAttribute": "mail",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "0421ae5c-875f-4da9-b299-4d085e93431a": {
+          "_id": "0421ae5c-875f-4da9-b299-4d085e93431a",
+          "_rev": "-854367184",
+          "defaultChoice": "Password",
+          "choices": [
+            "Password",
+            "Cancel"
+          ],
+          "prompt": "You look familiar, to protect this account we want you to authenticate to the existing account or cancel",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Password",
+              "displayName": "Password"
+            },
+            {
+              "id": "Cancel",
+              "displayName": "Cancel"
+            }
+          ]
+        },
+        "2a9ad8cf-c479-4bf4-88d2-030b6b1ac448": {
+          "_id": "2a9ad8cf-c479-4bf4-88d2-030b6b1ac448",
+          "_rev": "-546766742",
+          "defaultChoice": "Proceed",
+          "choices": [
+            "Proceed",
+            "Cancel"
+          ],
+          "prompt": "User does not exist... Create?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Proceed",
+              "displayName": "Proceed"
+            },
+            {
+              "id": "Cancel",
+              "displayName": "Cancel"
+            }
+          ]
+        },
+        "4b4c6d28-a179-4f6f-90eb-d52602df12ad": {
+          "_id": "4b4c6d28-a179-4f6f-90eb-d52602df12ad",
+          "_rev": "-1293729978",
+          "identityResource": "managed/alpha_user",
+          "_type": {
+            "_id": "CreateObjectNode",
+            "name": "Create Object",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "CREATED",
+              "displayName": "Created"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
+        "dfbaea60-ecfa-4424-b765-ab0fae6950cc": {
+          "_id": "dfbaea60-ecfa-4424-b765-ab0fae6950cc",
+          "_rev": "-302384236",
+          "_type": {
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "7428ce28-fbd5-4125-b04c-d745f3951999": {
+          "_id": "7428ce28-fbd5-4125-b04c-d745f3951999",
+          "_rev": "1549575532",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "d7497f9d-e9d8-4dd4-9680-111a6d100639": {
+          "_id": "d7497f9d-e9d8-4dd4-9680-111a6d100639",
+          "_rev": "1674379269",
+          "incrementUserAttributeOnFailure": true,
+          "retryLimit": 3,
+          "_type": {
+            "_id": "RetryLimitDecisionNode",
+            "name": "Retry Limit Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Retry",
+              "displayName": "Retry"
+            },
+            {
+              "id": "Reject",
+              "displayName": "Reject"
+            }
+          ]
+        },
+        "a3da098a-a2c9-433e-9ec7-69cf2968574e": {
+          "_id": "a3da098a-a2c9-433e-9ec7-69cf2968574e",
+          "_rev": "-1760605332",
+          "_type": {
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "b5d05b99-8cdd-4085-8e65-cba6dd22d880": {
+          "_id": "b5d05b99-8cdd-4085-8e65-cba6dd22d880",
+          "_rev": "1316623",
+          "tree": "ProgressiveProfile",
+          "_type": {
+            "_id": "InnerTreeEvaluatorNode",
+            "name": "Inner Tree Evaluator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "21484ab8-9fff-4e48-bea1-8174047a9b28": {
+          "_id": "21484ab8-9fff-4e48-bea1-8174047a9b28",
+          "_rev": "-1648020448",
+          "clientType": "BROWSER",
+          "script": "58c824ae-84ed-4724-82cd-db128fc3f6c",
+          "usernameAttribute": "userName",
+          "_type": {
+            "_id": "SocialProviderHandlerNode",
+            "name": "Social Provider Handler Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "ACCOUNT_EXISTS",
+              "displayName": "Account exists"
+            },
+            {
+              "id": "NO_ACCOUNT",
+              "displayName": "No account exists"
+            }
+          ]
+        },
+        "158b2972-b341-4f9c-a342-6f3f1d23b04e": {
+          "_id": "158b2972-b341-4f9c-a342-6f3f1d23b04e",
+          "_rev": "-1823752741",
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "IncrementLoginCountNode",
+            "name": "Increment Login Count",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "95d727d7-cab4-40bf-a58e-bb837e6f53a4": {
+          "_id": "95d727d7-cab4-40bf-a58e-bb837e6f53a4",
+          "_rev": "-2086054060",
+          "attributesToCollect": [
+            "givenName",
+            "sn",
+            "mail",
+            "userName"
+          ],
+          "identityAttribute": "userName",
+          "validateInputs": false,
+          "required": false,
+          "_type": {
+            "_id": "AttributeCollectorNode",
+            "name": "Attribute Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "b76624fc-ee48-41d0-871f-8d740bbcd7d4": {
+          "_id": "b76624fc-ee48-41d0-871f-8d740bbcd7d4",
+          "_rev": "600534745",
+          "defaultChoice": "Proceed",
+          "choices": [
+            "Cancel",
+            "Proceed"
+          ],
+          "prompt": "Found an Existing Social Linked User",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Cancel",
+              "displayName": "Cancel"
+            },
+            {
+              "id": "Proceed",
+              "displayName": "Proceed"
+            }
+          ]
+        },
+        "31d948b7-6fc4-436d-9ddb-fc0979943213": {
+          "_id": "31d948b7-6fc4-436d-9ddb-fc0979943213",
+          "_rev": "1859865327",
+          "defaultChoice": "Yes, please continue",
+          "choices": [
+            "Yes, please continue",
+            "No, not now"
+          ],
+          "prompt": "Do you want to provide a local password to be able to login locally?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Yes, please continue",
+              "displayName": "Yes, please continue"
+            },
+            {
+              "id": "No, not now",
+              "displayName": "No, not now"
+            }
+          ]
+        },
+        "bade494a-4514-43dc-9ab7-b54b523d22fa": {
+          "_id": "bade494a-4514-43dc-9ab7-b54b523d22fa",
+          "_rev": "-1101639552",
+          "nodes": [
+            {
+              "_id": "aec8113c-3872-45ae-8ddf-673db8630caf",
+              "nodeType": "DisplayUserNameNode",
+              "displayName": "Display Username"
+            },
+            {
+              "_id": "e317b3a1-2e25-44d8-b275-841579e617df",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please provide a password"
+          },
+          "pageHeader": {
+            "en": "Provide Password"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "a846cfb9-a842-4de2-bd70-ccc564e55ff3": {
+          "_id": "a846cfb9-a842-4de2-bd70-ccc564e55ff3",
+          "_rev": "457196040",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "0c6d1a95-b8c1-4961-8c89-6ed7520ea925": {
+          "_id": "0c6d1a95-b8c1-4961-8c89-6ed7520ea925",
+          "_rev": "-1504737274",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "3b9a699d-67e0-49af-bce0-18c44761927a": {
+          "_id": "3b9a699d-67e0-49af-bce0-18c44761927a",
+          "_rev": "-544128707",
+          "includeLocalAuthentication": true,
+          "filteredProviders": [
+            "Google"
+          ],
+          "identityAttribute": "mail",
+          "passwordAttribute": "password",
+          "offerOnlyExisting": false,
+          "_type": {
+            "_id": "SelectIdPNode",
+            "name": "Select Identity Provider",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "socialAuthentication",
+              "displayName": "Social Authentication"
+            },
+            {
+              "id": "localAuthentication",
+              "displayName": "Local Authentication"
+            }
+          ]
+        },
+        "aec8113c-3872-45ae-8ddf-673db8630caf": {
+          "_id": "aec8113c-3872-45ae-8ddf-673db8630caf",
+          "_rev": "541179043",
+          "userName": "userName",
+          "identityAttribute": "mail",
+          "_type": {
+            "_id": "DisplayUserNameNode",
+            "name": "Display Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "e317b3a1-2e25-44d8-b275-841579e617df": {
+          "_id": "e317b3a1-2e25-44d8-b275-841579e617df",
+          "_rev": "-1647634934",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {
+        "58c824ae-84ed-4724-82cd-db128fc3f6c": {
+          "_id": "58c824ae-84ed-4724-82cd-db128fc3f6c",
+          "name": "Normalized Profile to Managed User",
+          "description": "Converts a normalized social profile into a managed user",
+          "script": "\"/*\\n * Copyright 2020 ForgeRock AS. All Rights Reserved\\n *\\n * Use of this code requires a commercial software license with ForgeRock AS.\\n * or with one of its affiliates. All use shall be exclusively subject\\n * to such license between the licensee and ForgeRock AS.\\n */\\n\\nimport static org.forgerock.json.JsonValue.field\\nimport static org.forgerock.json.JsonValue.json\\nimport static org.forgerock.json.JsonValue.object\\n\\nimport org.forgerock.json.JsonValue\\n\\nJsonValue managedUser = json(object(\\n        field(\\\"givenName\\\", normalizedProfile.givenName),\\n        field(\\\"sn\\\", normalizedProfile.familyName),\\n        field(\\\"mail\\\", normalizedProfile.email),\\n        field(\\\"userName\\\", normalizedProfile.username)))\\n\\nif (normalizedProfile.postalAddress.isNotNull()) managedUser.put(\\\"postalAddress\\\", normalizedProfile.postalAddress)\\nif (normalizedProfile.addressLocality.isNotNull()) managedUser.put(\\\"city\\\", normalizedProfile.addressLocality)\\nif (normalizedProfile.addressRegion.isNotNull()) managedUser.put(\\\"stateProvince\\\", normalizedProfile.addressRegion)\\nif (normalizedProfile.postalCode.isNotNull()) managedUser.put(\\\"postalCode\\\", normalizedProfile.postalCode)\\nif (normalizedProfile.country.isNotNull()) managedUser.put(\\\"country\\\", normalizedProfile.country)\\nif (normalizedProfile.phone.isNotNull()) managedUser.put(\\\"telephoneNumber\\\", normalizedProfile.phone)\\n\\nreturn managedUser\"",
+          "default": true,
+          "language": "GROOVY",
+          "context": "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        },
+        "58d29080-4563-480b-89bb-1e7719776a21": {
+          "_id": "58d29080-4563-480b-89bb-1e7719776a21",
+          "name": "Google Profile Normalization",
+          "description": "Normalizes raw profile data from Google",
+          "script": "\"/*\\n * Copyright 2020 ForgeRock AS. All Rights Reserved\\n *\\n * Use of this code requires a commercial software license with ForgeRock AS.\\n * or with one of its affiliates. All use shall be exclusively subject\\n * to such license between the licensee and ForgeRock AS.\\n */\\n\\nimport static org.forgerock.json.JsonValue.field\\nimport static org.forgerock.json.JsonValue.json\\nimport static org.forgerock.json.JsonValue.object\\n\\nreturn json(object(\\n        field(\\\"id\\\", rawProfile.sub),\\n        field(\\\"displayName\\\", rawProfile.name),\\n        field(\\\"givenName\\\", rawProfile.given_name),\\n        field(\\\"familyName\\\", rawProfile.family_name),\\n        field(\\\"photoUrl\\\", rawProfile.picture),\\n        field(\\\"email\\\", rawProfile.email),\\n        field(\\\"username\\\", rawProfile.email),\\n        field(\\\"locale\\\", rawProfile.locale)))\"",
+          "default": true,
+          "language": "GROOVY",
+          "context": "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        }
+      },
+      "emailTemplates": {},
+      "socialIdentityProviders": {
+        "Google": {
+          "clientId": "CHANGE ME",
+          "pkceMethod": "S256",
+          "wellKnownEndpoint": "https://accounts.google.com/.well-known/openid-configuration",
+          "jwtEncryptionMethod": "NONE",
+          "authorizationEndpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+          "jwtEncryptionAlgorithm": "NONE",
+          "clientSecret": "CHANGE ME",
+          "issuerComparisonCheckType": "EXACT",
+          "encryptJwtRequestParameter": false,
+          "scopeDelimiter": " ",
+          "scopes": [
+            "openid",
+            "profile",
+            "email"
+          ],
+          "issuer": "https://accounts.google.com",
+          "userInfoResponseType": "JSON",
+          "acrValues": [],
+          "encryptedIdTokens": false,
+          "enabled": false,
+          "jwtRequestParameterOption": "NONE",
+          "authenticationIdKey": "sub",
+          "uiConfig": {
+            "buttonClass": "",
+            "buttonCustomStyle": "background-color: #fff; color: #757575; border-color: #ddd;",
+            "buttonCustomStyleHover": "color: #6d6d6d; background-color: #eee; border-color: #ccc;",
+            "buttonDisplayName": "Google",
+            "buttonImage": "images/g-logo.png",
+            "iconBackground": "#4184f3",
+            "iconClass": "fa-google",
+            "iconFontColor": "white"
+          },
+          "privateKeyJwtExpTime": 600,
+          "revocationCheckOptions": [],
+          "enableNativeNonce": true,
+          "transform": "58d29080-4563-480b-89bb-1e7719776a21",
+          "userInfoEndpoint": "https://www.googleapis.com/oauth2/v3/userinfo",
+          "jwtSigningAlgorithm": "NONE",
+          "redirectURI": "https://example.forgeblocks.com/login",
+          "clientAuthenticationMethod": "CLIENT_SECRET_POST",
+          "responseMode": "DEFAULT",
+          "useCustomTrustStore": false,
+          "tokenEndpoint": "https://www.googleapis.com/oauth2/v4/token",
+          "_id": "Google",
+          "_type": {
+            "_id": "googleConfig",
+            "name": "Client configuration for Google.",
+            "collection": true
+          }
+        }
+      },
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
