@@ -33,7 +33,7 @@ community
 6. Type your `journey-name/` to create another folder for your username. Adding `/` creates a path for a new folder. 
 7. Type in your `your-username/` to create another folder for your username.
 8. Now type in the journey name for your `journey-name.journey.json` file. Do not add `/` in this step. 
-9. Following the exact naming convention will kick in the GitHub Action to generate Readme files for your journey and add it to your PR once opened.
+9. Following `*.journey.json` format will kick in the GitHub Action to generate Readme files for your journey and add it to your PR once opened.
 10. Drag and drop your journey file in the code box below.
 
 ![image](https://user-images.githubusercontent.com/33761166/228279858-eceac83e-c372-4d2e-a72d-ddaf1919ac7e.png)
