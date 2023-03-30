@@ -1,42 +1,47 @@
 name: Journey Library CI Pipeline
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-    
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+    branches:
+      - main
+  pull_request_target:
+  
 jobs:
   # generate README.md for journey files
   readme:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+        # Checkout the fork/head-repository and push changes to the fork.
+        # If you skip this, the base repository will be checked out and changes
+        # will be committed to the base repository!
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+        # Checkout the branch made in the fork. Will automatically push changes
+        # back to this branch.
+        ref: ${{ github.head_ref }}
         
-      - name: install node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
+    - name: install node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
           
-      - name: Install frodo-cli
-        run: |
-          npm i -g @rockcarver/frodo-cli
-          frodo -v
+    - name: Install frodo-cli
+      run: |
+        npm i -g @rockcarver/frodo-cli
+        frodo -v
           
-      - name: Generate README.md files
-        run: |
-          find . -name "*.journey.json" -exec sh -c 'frodo journey describe -f "$0" --markdown --output-file "${0%/*}/README.md"' {} \;
+    - name: Generate README.md files
+      run: |
+        find . -name "*.journey.json" -exec sh -c 'frodo journey describe -f "$0" --markdown --output-file "${0%/*}/README.md"' {} \;
         
-      - name: Show changes
-        run: |
-          git status
+    - name: Show changes
+      run: |
+        git status
         
-      - uses: stefanzweifel/git-auto-commit-action@v4.7.2
-        with:
-          commit_message: update readme files
+        
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: update readme files
