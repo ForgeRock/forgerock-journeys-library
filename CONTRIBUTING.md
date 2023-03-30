@@ -1,6 +1,10 @@
 
 **Contributing from the GitHub UI**
 
+## Video tutorial: How to contribute 
+
+
+https://user-images.githubusercontent.com/33761166/228339438-7d163f5c-ae00-461c-a77a-13bcae03ab31.mov
 
 
 1. Follow the below folder structure when contributing to this repository.
