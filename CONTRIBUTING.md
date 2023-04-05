@@ -1,6 +1,8 @@
 
 # Contributing from the GitHub UI
 
+***Before contributing your journeys, please make sure they are devoid of any prioprietory or sensitive information**
+
 ## Video tutorial: How to contribute 
 
 
