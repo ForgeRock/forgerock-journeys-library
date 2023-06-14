@@ -1,0 +1,2220 @@
+{
+  "meta": {
+    "origin": "https://example.forgeblocks.com/platform/?realm=alpha#/journeys/Intelligent%20Workflows%20-%20sample%20journey",
+    "exportedBy": "example@forgerock.com",
+    "exportDate": "2023-05-22T15:21:19.046Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "Intelligent Workflows - sample journey"
+    ],
+    "innerTreesIncluded": [
+      "Baseline-UpdateMFA",
+      "Baseline-Passwordless",
+      "ResetPassword"
+    ]
+  },
+  "trees": {
+    "ResetPassword": {
+      "tree": {
+        "_id": "ResetPassword",
+        "_rev": "-1281592430",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[\"Password Reset\"]"
+        },
+        "entryNodeId": "cc3e1ed2-25f1-47bf-83c6-17084f8b2b2b",
+        "nodes": {
+          "06c97be5-7fdd-4739-aea1-ecc7fe082865": {
+            "connections": {
+              "outcome": "e4c752f9-c625-48c9-9644-a58802fa9e9c"
+            },
+            "displayName": "Email Suspend Node",
+            "nodeType": "EmailSuspendNode",
+            "x": 453,
+            "y": 66
+          },
+          "21b8ddf3-0203-4ae1-ab05-51cf3a3a707a": {
+            "connections": {
+              "false": "06c97be5-7fdd-4739-aea1-ecc7fe082865",
+              "true": "06c97be5-7fdd-4739-aea1-ecc7fe082865"
+            },
+            "displayName": "Identify Existing User",
+            "nodeType": "IdentifyExistingUserNode",
+            "x": 271,
+            "y": 21
+          },
+          "989f0bf8-a328-4217-b82b-5275d79ca8bd": {
+            "connections": {
+              "FAILURE": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "PATCHED": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Patch Object",
+            "nodeType": "PatchObjectNode",
+            "x": 819,
+            "y": 61
+          },
+          "cc3e1ed2-25f1-47bf-83c6-17084f8b2b2b": {
+            "connections": {
+              "outcome": "21b8ddf3-0203-4ae1-ab05-51cf3a3a707a"
+            },
+            "displayName": "Page Node",
+            "nodeType": "PageNode",
+            "x": 103,
+            "y": 50
+          },
+          "e4c752f9-c625-48c9-9644-a58802fa9e9c": {
+            "connections": {
+              "outcome": "989f0bf8-a328-4217-b82b-5275d79ca8bd"
+            },
+            "displayName": "Page Node",
+            "nodeType": "PageNode",
+            "x": 643,
+            "y": 50
+          }
+        },
+        "description": "Reset Password Tree",
+        "staticNodes": {
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 970,
+            "y": 79
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 981,
+            "y": 147
+          },
+          "startNode": {
+            "x": 25,
+            "y": 25
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "06c97be5-7fdd-4739-aea1-ecc7fe082865": {
+          "_id": "06c97be5-7fdd-4739-aea1-ecc7fe082865",
+          "_rev": "-1138066714",
+          "emailSuspendMessage": {
+            "en": "An email has been sent to the address you entered. Click the link in that email to proceed."
+          },
+          "emailTemplateName": "resetPassword",
+          "identityAttribute": "mail",
+          "emailAttribute": "mail",
+          "objectLookup": true,
+          "_type": {
+            "_id": "EmailSuspendNode",
+            "name": "Email Suspend Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "21b8ddf3-0203-4ae1-ab05-51cf3a3a707a": {
+          "_id": "21b8ddf3-0203-4ae1-ab05-51cf3a3a707a",
+          "_rev": "402776485",
+          "identityAttribute": "mail",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "989f0bf8-a328-4217-b82b-5275d79ca8bd": {
+          "_id": "989f0bf8-a328-4217-b82b-5275d79ca8bd",
+          "_rev": "555551070",
+          "identityResource": "managed/alpha_user",
+          "patchAsObject": false,
+          "ignoredFields": [],
+          "identityAttribute": "mail",
+          "_type": {
+            "_id": "PatchObjectNode",
+            "name": "Patch Object",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "PATCHED",
+              "displayName": "Patched"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
+        "cc3e1ed2-25f1-47bf-83c6-17084f8b2b2b": {
+          "_id": "cc3e1ed2-25f1-47bf-83c6-17084f8b2b2b",
+          "_rev": "86486605",
+          "nodes": [
+            {
+              "_id": "276afa7c-a680-4cf4-a5f6-d6c78191f5c9",
+              "nodeType": "AttributeCollectorNode",
+              "displayName": "Attribute Collector"
+            }
+          ],
+          "pageDescription": {
+            "en": "Enter your email address or <a href=\"#/service/Login\">Sign in</a>"
+          },
+          "pageHeader": {
+            "en": "Reset Password"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "e4c752f9-c625-48c9-9644-a58802fa9e9c": {
+          "_id": "e4c752f9-c625-48c9-9644-a58802fa9e9c",
+          "_rev": "1593283676",
+          "nodes": [
+            {
+              "_id": "009c19c8-9572-47bb-adb2-1f092c559a43",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {
+            "en": "Change password"
+          },
+          "pageHeader": {
+            "en": "Reset Password"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "276afa7c-a680-4cf4-a5f6-d6c78191f5c9": {
+          "_id": "276afa7c-a680-4cf4-a5f6-d6c78191f5c9",
+          "_rev": "-1256358519",
+          "attributesToCollect": [
+            "mail"
+          ],
+          "identityAttribute": "mail",
+          "validateInputs": false,
+          "required": true,
+          "_type": {
+            "_id": "AttributeCollectorNode",
+            "name": "Attribute Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "009c19c8-9572-47bb-adb2-1f092c559a43": {
+          "_id": "009c19c8-9572-47bb-adb2-1f092c559a43",
+          "_rev": "519412822",
+          "validateInput": true,
+          "passwordAttribute": "password",
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {
+        "resetPassword": {
+          "_id": "emailTemplate/resetPassword",
+          "defaultLocale": "en",
+          "enabled": true,
+          "from": "",
+          "message": {
+            "en": "<h3>Click to reset your password</h3><h4><a href=\"{{object.resumeURI}}\">Password reset link</a></h4>",
+            "fr": "<h3>Cliquez pour réinitialiser votre mot de passe</h3><h4><a href=\"{{object.resumeURI}}\">Mot de passe lien de réinitialisation</a></h4>"
+          },
+          "mimeType": "text/html",
+          "subject": {
+            "en": "Reset your password",
+            "fr": "Réinitialisez votre mot de passe"
+          }
+        }
+      },
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    },
+    "Baseline-Passwordless": {
+      "tree": {
+        "_id": "Baseline-Passwordless",
+        "_rev": "-1044798895",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {},
+        "entryNodeId": "cf6056bf-1575-4d70-882b-cf2dd2dd4930",
+        "nodes": {
+          "0b528042-0387-4d94-a6ee-52e07a52c046": {
+            "connections": {
+              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Modify Auth Level",
+            "nodeType": "ModifyAuthLevelNode",
+            "x": 1546,
+            "y": 429.33333333333337
+          },
+          "0c7d1af7-0eb3-4c41-9cce-635da903c314": {
+            "connections": {
+              "Reject": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "Retry": "f3f26b6a-cdb6-4da6-87b8-0cac77febe07"
+            },
+            "displayName": "Retry Limit Decision",
+            "nodeType": "RetryLimitDecisionNode",
+            "x": 1767,
+            "y": 177.16666666666669
+          },
+          "0fce5e03-9bd4-4aff-9fe8-e9a512e4986e": {
+            "connections": {
+              "false": "50827082-9a4c-4242-b583-19acb7597b81",
+              "true": "9994893b-6382-40fe-b07f-778ac57d4fcc"
+            },
+            "displayName": "OATH, WebAuthn Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 406,
+            "y": 386.6666666666667
+          },
+          "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc": {
+            "connections": {
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "failure": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "noDevice": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "success": "0b528042-0387-4d94-a6ee-52e07a52c046",
+              "unsupported": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "displayName": "Web Authn",
+            "nodeType": "PageNode",
+            "x": 1205,
+            "y": 520
+          },
+          "203a8e58-7e9d-4f64-8e9c-2401c12e5a12": {
+            "connections": {
+              "Approve sign-in attempt in the app": "8ee40de9-05be-47e8-9aff-b61c3ffb6a97",
+              "Enter a secure access code from the app": "f6d91e01-add6-457b-ac2a-bcbdca5ac225",
+              "Identify me using my browser": "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc"
+            },
+            "displayName": "OATH or Push or WebAuthn",
+            "nodeType": "ChoiceCollectorNode",
+            "x": 488,
+            "y": 36.166666666666686
+          },
+          "37527fbb-edf9-49e2-9223-8e82d0b3d95d": {
+            "connections": {
+              "false": "ab1351e4-9efa-4376-b280-e39ad5b2cb5a",
+              "true": "f6d91e01-add6-457b-ac2a-bcbdca5ac225"
+            },
+            "displayName": "OATH Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 664,
+            "y": 648
+          },
+          "50827082-9a4c-4242-b583-19acb7597b81": {
+            "connections": {
+              "false": "37527fbb-edf9-49e2-9223-8e82d0b3d95d",
+              "true": "8961b16c-675f-4199-9907-04f0656ec70c"
+            },
+            "displayName": "Push, WebAuthn Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 526,
+            "y": 527.6666666666667
+          },
+          "8961b16c-675f-4199-9907-04f0656ec70c": {
+            "connections": {
+              "Approve sign-in attempt in the app": "8ee40de9-05be-47e8-9aff-b61c3ffb6a97",
+              "Identify me using my browser": "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc"
+            },
+            "displayName": "Push or WebAuthn",
+            "nodeType": "ChoiceCollectorNode",
+            "x": 776,
+            "y": 404.6666666666667
+          },
+          "8ee40de9-05be-47e8-9aff-b61c3ffb6a97": {
+            "connections": {
+              "NOT_REGISTERED": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "SENT": "f3f26b6a-cdb6-4da6-87b8-0cac77febe07"
+            },
+            "displayName": "Push Notification",
+            "nodeType": "PushAuthenticationSenderNode",
+            "x": 1210,
+            "y": 87
+          },
+          "94c9f6b6-1061-4e9b-9f28-a9f90af9114c": {
+            "connections": {
+              "false": "0fce5e03-9bd4-4aff-9fe8-e9a512e4986e",
+              "true": "cb2bf377-1c6c-471b-ae0c-89b71096b50b"
+            },
+            "displayName": "OATH, Push Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 293,
+            "y": 247.33333333333337
+          },
+          "98442366-d890-48b1-94b5-0e54970db912": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc"
+            },
+            "displayName": "WebAuthn Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 1063,
+            "y": 802
+          },
+          "9994893b-6382-40fe-b07f-778ac57d4fcc": {
+            "connections": {
+              "Enter a secure access code from the app": "f6d91e01-add6-457b-ac2a-bcbdca5ac225",
+              "Identify me using my browser": "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc"
+            },
+            "displayName": "OATH or WebAuthn",
+            "nodeType": "ChoiceCollectorNode",
+            "x": 638,
+            "y": 234.33333333333326
+          },
+          "ab1351e4-9efa-4376-b280-e39ad5b2cb5a": {
+            "connections": {
+              "false": "98442366-d890-48b1-94b5-0e54970db912",
+              "true": "8ee40de9-05be-47e8-9aff-b61c3ffb6a97"
+            },
+            "displayName": "Push Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 857,
+            "y": 716
+          },
+          "ba87cd10-a8cc-4704-8406-1ec66931b09c": {
+            "connections": {
+              "DONE": "0c7d1af7-0eb3-4c41-9cce-635da903c314"
+            },
+            "displayName": "Waiting",
+            "nodeType": "PageNode",
+            "x": 1843,
+            "y": 23.16666666666663
+          },
+          "cb2bf377-1c6c-471b-ae0c-89b71096b50b": {
+            "connections": {
+              "Approve this attempt in the app": "8ee40de9-05be-47e8-9aff-b61c3ffb6a97",
+              "Enter a secure access code from the app": "f6d91e01-add6-457b-ac2a-bcbdca5ac225"
+            },
+            "displayName": "OATH or Push",
+            "nodeType": "ChoiceCollectorNode",
+            "x": 776,
+            "y": 39.33333333333326
+          },
+          "cf6056bf-1575-4d70-882b-cf2dd2dd4930": {
+            "connections": {
+              "false": "94c9f6b6-1061-4e9b-9f28-a9f90af9114c",
+              "true": "203a8e58-7e9d-4f64-8e9c-2401c12e5a12"
+            },
+            "displayName": "OATH, Push, WebAuthn Enabled",
+            "nodeType": "QueryFilterDecisionNode",
+            "x": 162,
+            "y": 98.5
+          },
+          "f3f26b6a-cdb6-4da6-87b8-0cac77febe07": {
+            "connections": {
+              "EXPIRED": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "FALSE": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "TRUE": "0b528042-0387-4d94-a6ee-52e07a52c046",
+              "WAITING": "ba87cd10-a8cc-4704-8406-1ec66931b09c"
+            },
+            "displayName": "Push Result Verifier Node",
+            "nodeType": "PushResultVerifierNode",
+            "x": 1491,
+            "y": 69.5
+          },
+          "f6d91e01-add6-457b-ac2a-bcbdca5ac225": {
+            "connections": {
+              "failureOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "notRegisteredOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "successOutcome": "0b528042-0387-4d94-a6ee-52e07a52c046"
+            },
+            "displayName": "Enter TOTP",
+            "nodeType": "PageNode",
+            "x": 1204,
+            "y": 290.3333333333333
+          }
+        },
+        "staticNodes": {
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1984,
+            "y": 414.33333333333337
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1989,
+            "y": 560
+          },
+          "startNode": {
+            "x": 70,
+            "y": 254.00000000000003
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "0b528042-0387-4d94-a6ee-52e07a52c046": {
+          "_id": "0b528042-0387-4d94-a6ee-52e07a52c046",
+          "_rev": "1082190266",
+          "authLevelIncrement": 1,
+          "_type": {
+            "_id": "ModifyAuthLevelNode",
+            "name": "Modify Auth Level",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "0c7d1af7-0eb3-4c41-9cce-635da903c314": {
+          "_id": "0c7d1af7-0eb3-4c41-9cce-635da903c314",
+          "_rev": "436104507",
+          "incrementUserAttributeOnFailure": true,
+          "retryLimit": 8,
+          "_type": {
+            "_id": "RetryLimitDecisionNode",
+            "name": "Retry Limit Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Retry",
+              "displayName": "Retry"
+            },
+            {
+              "id": "Reject",
+              "displayName": "Reject"
+            }
+          ]
+        },
+        "0fce5e03-9bd4-4aff-9fe8-e9a512e4986e": {
+          "_id": "0fce5e03-9bd4-4aff-9fe8-e9a512e4986e",
+          "_rev": "-467963079",
+          "identityAttribute": "userName",
+          "queryFilter": "(frIndexedMultivalued2 co \"oath\" and !(frIndexedMultivalued2 co \"oath:disabled\")) and (frIndexedMultivalued2 co \"webauthn\" and !(frIndexedMultivalued2 co \"webauthn:disabled\"))",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc": {
+          "_id": "1ca06b07-5bdd-473a-9aa9-c5571ef02bdc",
+          "_rev": "-706440664",
+          "nodes": [
+            {
+              "_id": "add38eaa-ba78-4188-8121-2e5af44ae48b",
+              "nodeType": "WebAuthnAuthenticationNode",
+              "displayName": "WebAuthn Authentication Node"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Please follow the prompts in your browser"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "unsupported",
+              "displayName": "Unsupported"
+            },
+            {
+              "id": "noDevice",
+              "displayName": "No Device Registered"
+            },
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "failure",
+              "displayName": "Failure"
+            },
+            {
+              "id": "error",
+              "displayName": "Client Error"
+            }
+          ]
+        },
+        "203a8e58-7e9d-4f64-8e9c-2401c12e5a12": {
+          "_id": "203a8e58-7e9d-4f64-8e9c-2401c12e5a12",
+          "_rev": "-178675161",
+          "defaultChoice": "Yes",
+          "choices": [
+            "Approve sign-in attempt in the app",
+            "Identify me using my browser",
+            "Enter a secure access code from the app"
+          ],
+          "prompt": "How would you like to identify yourself?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Approve sign-in attempt in the app",
+              "displayName": "Approve sign-in attempt in the app"
+            },
+            {
+              "id": "Identify me using my browser",
+              "displayName": "Identify me using my browser"
+            },
+            {
+              "id": "Enter a secure access code from the app",
+              "displayName": "Enter a secure access code from the app"
+            }
+          ]
+        },
+        "37527fbb-edf9-49e2-9223-8e82d0b3d95d": {
+          "_id": "37527fbb-edf9-49e2-9223-8e82d0b3d95d",
+          "_rev": "979022468",
+          "identityAttribute": "userName",
+          "queryFilter": "frIndexedMultivalued2 co \"oath\" and !(frIndexedMultivalued2 co \"oath:disabled\")",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "50827082-9a4c-4242-b583-19acb7597b81": {
+          "_id": "50827082-9a4c-4242-b583-19acb7597b81",
+          "_rev": "-401940994",
+          "identityAttribute": "userName",
+          "queryFilter": "(frIndexedMultivalued2 co \"push\" and !(frIndexedMultivalued2 co \"push:disabled\")) and (frIndexedMultivalued2 co \"webauthn\" and !(frIndexedMultivalued2 co \"webauthn:disabled\"))",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "8961b16c-675f-4199-9907-04f0656ec70c": {
+          "_id": "8961b16c-675f-4199-9907-04f0656ec70c",
+          "_rev": "92764183",
+          "defaultChoice": "Identify me using my browser",
+          "choices": [
+            "Approve sign-in attempt in the app",
+            "Identify me using my browser"
+          ],
+          "prompt": "How would you like to identify yourself?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Approve sign-in attempt in the app",
+              "displayName": "Approve sign-in attempt in the app"
+            },
+            {
+              "id": "Identify me using my browser",
+              "displayName": "Identify me using my browser"
+            }
+          ]
+        },
+        "8ee40de9-05be-47e8-9aff-b61c3ffb6a97": {
+          "_id": "8ee40de9-05be-47e8-9aff-b61c3ffb6a97",
+          "_rev": "-2075106327",
+          "contextInfo": false,
+          "userMessage": {},
+          "pushType": "DEFAULT",
+          "customPayload": [],
+          "mandatory": true,
+          "messageTimeout": 120000,
+          "_type": {
+            "_id": "PushAuthenticationSenderNode",
+            "name": "Push Sender",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "SENT",
+              "displayName": "Sent"
+            },
+            {
+              "id": "NOT_REGISTERED",
+              "displayName": "Not Registered"
+            }
+          ]
+        },
+        "94c9f6b6-1061-4e9b-9f28-a9f90af9114c": {
+          "_id": "94c9f6b6-1061-4e9b-9f28-a9f90af9114c",
+          "_rev": "-1270186844",
+          "identityAttribute": "userName",
+          "queryFilter": "(frIndexedMultivalued2 co \"oath\" and !(frIndexedMultivalued2 co \"oath:disabled\")) and (frIndexedMultivalued2 co \"push\" and !(frIndexedMultivalued2 co \"push:disabled\"))",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "98442366-d890-48b1-94b5-0e54970db912": {
+          "_id": "98442366-d890-48b1-94b5-0e54970db912",
+          "_rev": "1126446634",
+          "identityAttribute": "userName",
+          "queryFilter": "frIndexedMultivalued2 co \"webauthn\" and !(frIndexedMultivalued2 co \"webauthn:disabled\")",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "9994893b-6382-40fe-b07f-778ac57d4fcc": {
+          "_id": "9994893b-6382-40fe-b07f-778ac57d4fcc",
+          "_rev": "795935559",
+          "defaultChoice": "Identify me using my browser",
+          "choices": [
+            "Identify me using my browser",
+            "Enter a secure access code from the app"
+          ],
+          "prompt": "How would you like to identify yourself?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Identify me using my browser",
+              "displayName": "Identify me using my browser"
+            },
+            {
+              "id": "Enter a secure access code from the app",
+              "displayName": "Enter a secure access code from the app"
+            }
+          ]
+        },
+        "ab1351e4-9efa-4376-b280-e39ad5b2cb5a": {
+          "_id": "ab1351e4-9efa-4376-b280-e39ad5b2cb5a",
+          "_rev": "-1649774723",
+          "identityAttribute": "userName",
+          "queryFilter": "frIndexedMultivalued2 co \"push\" and !(frIndexedMultivalued2 co \"push:disabled\")",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "ba87cd10-a8cc-4704-8406-1ec66931b09c": {
+          "_id": "ba87cd10-a8cc-4704-8406-1ec66931b09c",
+          "_rev": "436701410",
+          "nodes": [
+            {
+              "_id": "5b1469a4-2c3d-42de-8a46-b88857069c3d",
+              "nodeType": "PollingWaitNode",
+              "displayName": "Polling Wait Node"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Please check your device"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "DONE",
+              "displayName": "Done"
+            }
+          ]
+        },
+        "cb2bf377-1c6c-471b-ae0c-89b71096b50b": {
+          "_id": "cb2bf377-1c6c-471b-ae0c-89b71096b50b",
+          "_rev": "1888170798",
+          "defaultChoice": "Enter a secure access code from the app",
+          "choices": [
+            "Approve this attempt in the app",
+            "Enter a secure access code from the app"
+          ],
+          "prompt": "How would you like to identify yourself?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Approve this attempt in the app",
+              "displayName": "Approve this attempt in the app"
+            },
+            {
+              "id": "Enter a secure access code from the app",
+              "displayName": "Enter a secure access code from the app"
+            }
+          ]
+        },
+        "cf6056bf-1575-4d70-882b-cf2dd2dd4930": {
+          "_id": "cf6056bf-1575-4d70-882b-cf2dd2dd4930",
+          "_rev": "806698961",
+          "identityAttribute": "userName",
+          "queryFilter": "(frIndexedMultivalued2 co \"webauthn\" and !(frIndexedMultivalued2 co \"webauthn:disabled\")) and (frIndexedMultivalued2 co \"push\" and !(frIndexedMultivalued2 co \"push:disabled\")) and (frIndexedMultivalued2 co \"oath\" and !(frIndexedMultivalued2 co \"oath:disabled\"))",
+          "_type": {
+            "_id": "QueryFilterDecisionNode",
+            "name": "Query Filter Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "f3f26b6a-cdb6-4da6-87b8-0cac77febe07": {
+          "_id": "f3f26b6a-cdb6-4da6-87b8-0cac77febe07",
+          "_rev": "1704660874",
+          "_type": {
+            "_id": "PushResultVerifierNode",
+            "name": "Push Result Verifier Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "TRUE",
+              "displayName": "Success"
+            },
+            {
+              "id": "FALSE",
+              "displayName": "Failure"
+            },
+            {
+              "id": "EXPIRED",
+              "displayName": "Expired"
+            },
+            {
+              "id": "WAITING",
+              "displayName": "Waiting"
+            }
+          ]
+        },
+        "f6d91e01-add6-457b-ac2a-bcbdca5ac225": {
+          "_id": "f6d91e01-add6-457b-ac2a-bcbdca5ac225",
+          "_rev": "-831811850",
+          "nodes": [
+            {
+              "_id": "2b9d06bb-e1d6-42a8-a590-da13a94139d2",
+              "nodeType": "OathTokenVerifierNode",
+              "displayName": "OATH Token Verifier"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Please enter the code you see in our mobile app"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "successOutcome",
+              "displayName": "Success"
+            },
+            {
+              "id": "failureOutcome",
+              "displayName": "Failure"
+            },
+            {
+              "id": "notRegisteredOutcome",
+              "displayName": "Not registered"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "add38eaa-ba78-4188-8121-2e5af44ae48b": {
+          "_id": "add38eaa-ba78-4188-8121-2e5af44ae48b",
+          "_rev": "1339559607",
+          "requiresResidentKey": false,
+          "asScript": false,
+          "origins": [],
+          "userVerificationRequirement": "PREFERRED",
+          "isRecoveryCodeAllowed": false,
+          "timeout": 60,
+          "_type": {
+            "_id": "WebAuthnAuthenticationNode",
+            "name": "WebAuthn Authentication Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "unsupported",
+              "displayName": "Unsupported"
+            },
+            {
+              "id": "noDevice",
+              "displayName": "No Device Registered"
+            },
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "failure",
+              "displayName": "Failure"
+            },
+            {
+              "id": "error",
+              "displayName": "Client Error"
+            }
+          ]
+        },
+        "5b1469a4-2c3d-42de-8a46-b88857069c3d": {
+          "_id": "5b1469a4-2c3d-42de-8a46-b88857069c3d",
+          "_rev": "1261631070",
+          "spamDetectionTolerance": 8,
+          "spamDetectionEnabled": false,
+          "exitMessage": {},
+          "waitingMessage": {},
+          "secondsToWait": 8,
+          "exitable": false,
+          "_type": {
+            "_id": "PollingWaitNode",
+            "name": "Polling Wait Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "DONE",
+              "displayName": "Done"
+            }
+          ]
+        },
+        "2b9d06bb-e1d6-42a8-a590-da13a94139d2": {
+          "_id": "2b9d06bb-e1d6-42a8-a590-da13a94139d2",
+          "_rev": "-1863501096",
+          "totpTimeInterval": 30,
+          "maximumAllowedClockDrift": 5,
+          "totpTimeSteps": 2,
+          "totpHashAlgorithm": "HMAC_SHA1",
+          "isRecoveryCodeAllowed": false,
+          "algorithm": "TOTP",
+          "hotpWindowSize": 100,
+          "_type": {
+            "_id": "OathTokenVerifierNode",
+            "name": "OATH Token Verifier",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "successOutcome",
+              "displayName": "Success"
+            },
+            {
+              "id": "failureOutcome",
+              "displayName": "Failure"
+            },
+            {
+              "id": "notRegisteredOutcome",
+              "displayName": "Not registered"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    },
+    "Baseline-UpdateMFA": {
+      "tree": {
+        "_id": "Baseline-UpdateMFA",
+        "_rev": "-253357401",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {},
+        "entryNodeId": "ba79f980-c93c-4cbf-a41e-bad326c1798f",
+        "nodes": {
+          "7fd426c8-1ee8-4305-9159-843f0854df52": {
+            "connections": {
+              "Approve access using the app": "8a214fdb-fe86-4dec-adaf-2658d0d36867",
+              "Enable my browser to sign me in": "c2fc7f23-2beb-46fc-a5fb-b03468345165"
+            },
+            "displayName": "Choice Collector",
+            "nodeType": "ChoiceCollectorNode",
+            "x": 713,
+            "y": 223
+          },
+          "8a214fdb-fe86-4dec-adaf-2658d0d36867": {
+            "connections": {
+              "failureOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "successOutcome": "c126d898-0da2-4cd0-8bd5-bde20eae8ab1",
+              "timeoutOutcome": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "displayName": "Push Registration",
+            "nodeType": "PushRegistrationNode",
+            "x": 943,
+            "y": 80
+          },
+          "ba79f980-c93c-4cbf-a41e-bad326c1798f": {
+            "connections": {
+              "outcome": "fdf552f1-2463-4b9b-9d27-a3f0b907dc98"
+            },
+            "displayName": "Get Session Data",
+            "nodeType": "SessionDataNode",
+            "x": 210,
+            "y": 269
+          },
+          "c126d898-0da2-4cd0-8bd5-bde20eae8ab1": {
+            "connections": {
+              "error": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Save MFA Preference",
+            "nodeType": "ScriptedDecisionNode",
+            "x": 1188,
+            "y": 139.33333333333334
+          },
+          "c2fc7f23-2beb-46fc-a5fb-b03468345165": {
+            "connections": {
+              "error": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "failure": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "success": "c126d898-0da2-4cd0-8bd5-bde20eae8ab1",
+              "unsupported": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "displayName": "Register Device",
+            "nodeType": "PageNode",
+            "x": 943,
+            "y": 290
+          },
+          "fdf552f1-2463-4b9b-9d27-a3f0b907dc98": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "7fd426c8-1ee8-4305-9159-843f0854df52"
+            },
+            "displayName": "Identify Existing User",
+            "nodeType": "IdentifyExistingUserNode",
+            "x": 444,
+            "y": 244
+          }
+        },
+        "staticNodes": {
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1453,
+            "y": 261.5
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1188,
+            "y": 294.6666666666667
+          },
+          "startNode": {
+            "x": 70,
+            "y": 261.5
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "7fd426c8-1ee8-4305-9159-843f0854df52": {
+          "_id": "7fd426c8-1ee8-4305-9159-843f0854df52",
+          "_rev": "-1306688348",
+          "defaultChoice": "Enable my browser to sign me in",
+          "choices": [
+            "Enable my browser to sign me in"
+          ],
+          "prompt": "How would you like to identify yourself next time?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Enable my browser to sign me in",
+              "displayName": "Enable my browser to sign me in"
+            }
+          ]
+        },
+        "8a214fdb-fe86-4dec-adaf-2658d0d36867": {
+          "_id": "8a214fdb-fe86-4dec-adaf-2658d0d36867",
+          "_rev": "-1277392616",
+          "bgColor": "032b75",
+          "generateRecoveryCodes": true,
+          "scanQRCodeMessage": {},
+          "accountName": "COMMON_NAME",
+          "issuer": "ForgeRock",
+          "imgUrl": "",
+          "timeout": 60,
+          "_type": {
+            "_id": "PushRegistrationNode",
+            "name": "Push Registration",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "successOutcome",
+              "displayName": "Success"
+            },
+            {
+              "id": "failureOutcome",
+              "displayName": "Failure"
+            },
+            {
+              "id": "timeoutOutcome",
+              "displayName": "Time Out"
+            }
+          ]
+        },
+        "ba79f980-c93c-4cbf-a41e-bad326c1798f": {
+          "_id": "ba79f980-c93c-4cbf-a41e-bad326c1798f",
+          "_rev": "1454300505",
+          "sessionDataKey": "userName",
+          "sharedStateKey": "userName",
+          "_type": {
+            "_id": "SessionDataNode",
+            "name": "Get Session Data",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "c126d898-0da2-4cd0-8bd5-bde20eae8ab1": {
+          "_id": "c126d898-0da2-4cd0-8bd5-bde20eae8ab1",
+          "_rev": "-791038012",
+          "script": "39e615b2-898e-4178-ba30-f58bcc095797",
+          "outcomes": [
+            "true",
+            "error"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            },
+            {
+              "id": "error",
+              "displayName": "error"
+            }
+          ]
+        },
+        "c2fc7f23-2beb-46fc-a5fb-b03468345165": {
+          "_id": "c2fc7f23-2beb-46fc-a5fb-b03468345165",
+          "_rev": "-111282201",
+          "nodes": [
+            {
+              "_id": "1f886519-d9f9-4012-863d-36a4cd56f89f",
+              "nodeType": "WebAuthnRegistrationNode",
+              "displayName": "WebAuthn Registration Node"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please follow the instructions from your browser"
+          },
+          "pageHeader": {
+            "en": "Analysing your device..."
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "unsupported",
+              "displayName": "Unsupported"
+            },
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "failure",
+              "displayName": "Failure"
+            },
+            {
+              "id": "error",
+              "displayName": "Client Error"
+            }
+          ]
+        },
+        "fdf552f1-2463-4b9b-9d27-a3f0b907dc98": {
+          "_id": "fdf552f1-2463-4b9b-9d27-a3f0b907dc98",
+          "_rev": "-407395232",
+          "identityAttribute": "mail",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "1f886519-d9f9-4012-863d-36a4cd56f89f": {
+          "_id": "1f886519-d9f9-4012-863d-36a4cd56f89f",
+          "_rev": "69690438",
+          "trustStoreAlias": "trustalias",
+          "relyingPartyName": "ForgeRock",
+          "maxSavedDevices": 0,
+          "generateRecoveryCodes": true,
+          "storeAttestationDataInTransientState": false,
+          "origins": [],
+          "userVerificationRequirement": "PREFERRED",
+          "postponeDeviceProfileStorage": false,
+          "excludeCredentials": false,
+          "requiresResidentKey": false,
+          "authenticatorAttachment": "UNSPECIFIED",
+          "asScript": false,
+          "acceptedSigningAlgorithms": [
+            "ES256",
+            "RS256"
+          ],
+          "attestationPreference": "NONE",
+          "enforceRevocationCheck": false,
+          "timeout": 60,
+          "_type": {
+            "_id": "WebAuthnRegistrationNode",
+            "name": "WebAuthn Registration Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "unsupported",
+              "displayName": "Unsupported"
+            },
+            {
+              "id": "success",
+              "displayName": "Success"
+            },
+            {
+              "id": "failure",
+              "displayName": "Failure"
+            },
+            {
+              "id": "error",
+              "displayName": "Client Error"
+            }
+          ]
+        }
+      },
+      "scripts": {
+        "39e615b2-898e-4178-ba30-f58bcc095797": {
+          "_id": "39e615b2-898e-4178-ba30-f58bcc095797",
+          "name": "Save MFA Preference",
+          "description": "null",
+          "script": "\"var fr = JavaImporter(\\n  org.forgerock.openam.auth.node.api\\n);\\nwith (fr) {\\n  \\n  var username = sharedState.get(\\\"_id\\\")\\n  var mfaPrefAttribute = \\\"fr-attr-imulti2\\\"\\n  var mfaType = \\\"\\\";\\n  \\n  if (sharedState.get(\\\"web-authn-challenge\\\") != null) {\\n    mfaType = \\\"webauthn\\\";\\n  } else if (sharedState.get(\\\"pushRegistrationTimeout\\\") != null) {\\n   \\tmfaType = \\\"push\\\"\\n  }\\n  \\n  idRepository.addAttribute(username, mfaPrefAttribute, [mfaType]);\\n  \\n  outcome = \\\"true\\\"\\n}\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "null",
+          "creationDate": 0,
+          "lastModifiedBy": "null",
+          "lastModifiedDate": 0
+        }
+      },
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    },
+    "Intelligent Workflows - sample journey": {
+      "tree": {
+        "_id": "Intelligent Workflows - sample journey",
+        "_rev": "783557741",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[]"
+        },
+        "entryNodeId": "bf104a38-9e86-4ca6-b6f2-3eaf0b4f77c6",
+        "nodes": {
+          "aed7aed7-27c7-40b1-b71f-6d7360ffc7e8": {
+            "x": 2243,
+            "y": 502,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "01a9e3f4-7dbb-4b82-9bcd-a1953a1ff34f"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "Change password?"
+          },
+          "50c447a2-caa8-4c53-be3a-772f7843a84a": {
+            "x": 1969,
+            "y": 231.5,
+            "connections": {
+              "CANCELLED": "aed7aed7-27c7-40b1-b71f-6d7360ffc7e8",
+              "EXPIRED": "aed7aed7-27c7-40b1-b71f-6d7360ffc7e8",
+              "FALSE": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "LOCKED": "0119bd56-f279-4b64-92b5-e1120971182a",
+              "TRUE": "94a1b0c7-86a6-4e4a-8b14-661b7f9d6182"
+            },
+            "nodeType": "IdentityStoreDecisionNode",
+            "displayName": "Identity Store Decision"
+          },
+          "06a0ae71-03e2-4166-8165-61cb17b9bc70": {
+            "x": 2717,
+            "y": 167.25,
+            "connections": {
+              "No, I like my Password": "e2ddfdc3-b82b-4792-b347-10f574e52894",
+              "Yes, I hate Passwords": "9872d23f-58da-475c-84a7-c0a5fd231d92"
+            },
+            "nodeType": "ChoiceCollectorNode",
+            "displayName": "Enroll in Passwordless?"
+          },
+          "104dfce6-04f6-4799-a115-7a92923814f9": {
+            "x": 3774,
+            "y": 398,
+            "connections": {
+              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "IncrementLoginCountNode",
+            "displayName": "Increment Login Count"
+          },
+          "0119bd56-f279-4b64-92b5-e1120971182a": {
+            "x": 2246,
+            "y": 391,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "648ff389-62da-4d4b-b69c-788c448f39c2"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "Account Locked"
+          },
+          "7318c2fe-6e08-4b67-92a0-84d4677c0a9d": {
+            "x": 3232,
+            "y": 142,
+            "connections": {
+              "false": "e2ddfdc3-b82b-4792-b347-10f574e52894",
+              "true": "e2ddfdc3-b82b-4792-b347-10f574e52894"
+            },
+            "nodeType": "InnerTreeEvaluatorNode",
+            "displayName": "Set up MFA"
+          },
+          "7d5ca0fb-d84d-4495-b9d1-0c3d15b075bb": {
+            "x": 940,
+            "y": 341.6666666666667,
+            "connections": {
+              "outcome": "50c447a2-caa8-4c53-be3a-772f7843a84a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "7bd1af2a-9c39-46c6-a72c-ed7d4988ca0b": {
+            "x": 471,
+            "y": 265,
+            "connections": {
+              "false": "7d5ca0fb-d84d-4495-b9d1-0c3d15b075bb",
+              "true": "8cfabc1e-8079-4e36-b715-bb966a9a3b6a"
+            },
+            "nodeType": "PersistentCookieDecisionNode",
+            "displayName": "Persistent Cookie Decision"
+          },
+          "648ff389-62da-4d4b-b69c-788c448f39c2": {
+            "x": 2501,
+            "y": 370.5,
+            "connections": {
+              "outcome": "df27de20-0ff4-48d2-af39-24c1c64db1a1"
+            },
+            "nodeType": "EmailSuspendNode",
+            "displayName": "Email Suspend Node"
+          },
+          "94a1b0c7-86a6-4e4a-8b14-661b7f9d6182": {
+            "x": 2231,
+            "y": 19,
+            "connections": {
+              "false": "04b22bd8-c664-47bd-869d-e050b74c8fe8",
+              "true": "e2ddfdc3-b82b-4792-b347-10f574e52894"
+            },
+            "nodeType": "AttributePresentDecisionNode",
+            "displayName": "Passwordless Enrolled?"
+          },
+          "04b22bd8-c664-47bd-869d-e050b74c8fe8": {
+            "x": 2433,
+            "y": 227.25,
+            "connections": {
+              "false": "e2ddfdc3-b82b-4792-b347-10f574e52894",
+              "true": "06a0ae71-03e2-4166-8165-61cb17b9bc70"
+            },
+            "nodeType": "LoginCountDecisionNode",
+            "displayName": "Login Count Decision"
+          },
+          "bf104a38-9e86-4ca6-b6f2-3eaf0b4f77c6": {
+            "x": 203,
+            "y": 292,
+            "connections": {
+              "outcome": "7bd1af2a-9c39-46c6-a72c-ed7d4988ca0b"
+            },
+            "nodeType": "DeviceProfileCollectorNode",
+            "displayName": "Device Profile Collector"
+          },
+          "8731e0a1-d29b-4d56-8fb2-023776e87727": {
+            "x": 1241,
+            "y": 26,
+            "connections": {
+              "false": "b17410d7-5692-4307-9599-e82927d77ed0",
+              "true": "1ebb71ac-aa91-4346-8c83-3bab204a24ca"
+            },
+            "nodeType": "AttributePresentDecisionNode",
+            "displayName": "Passwordless Enrolled?"
+          },
+          "b17410d7-5692-4307-9599-e82927d77ed0": {
+            "x": 1735,
+            "y": 143.5,
+            "connections": {
+              "outcome": "50c447a2-caa8-4c53-be3a-772f7843a84a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Page Node"
+          },
+          "8cfabc1e-8079-4e36-b715-bb966a9a3b6a": {
+            "x": 756,
+            "y": 123.33333333333334,
+            "connections": {
+              "false": "7d5ca0fb-d84d-4495-b9d1-0c3d15b075bb",
+              "true": "955fb416-3924-49e7-adae-fd93d82308df"
+            },
+            "nodeType": "IdentifyExistingUserNode",
+            "displayName": "Identify Existing User"
+          },
+          "e2ddfdc3-b82b-4792-b347-10f574e52894": {
+            "x": 3403,
+            "y": 401,
+            "connections": {
+              "outcome": "3679be44-19b8-496e-aa8a-5d3c9c9294cd"
+            },
+            "nodeType": "SetPersistentCookieNode",
+            "displayName": "Set Persistent Cookie"
+          },
+          "3679be44-19b8-496e-aa8a-5d3c9c9294cd": {
+            "x": 3596,
+            "y": 342,
+            "connections": {
+              "outcome": "104dfce6-04f6-4799-a115-7a92923814f9"
+            },
+            "nodeType": "DeviceSaveNode",
+            "displayName": "Device Profile Save"
+          },
+          "1ebb71ac-aa91-4346-8c83-3bab204a24ca": {
+            "x": 1513,
+            "y": 18,
+            "connections": {
+              "false": "b17410d7-5692-4307-9599-e82927d77ed0",
+              "true": "e2ddfdc3-b82b-4792-b347-10f574e52894"
+            },
+            "nodeType": "InnerTreeEvaluatorNode",
+            "displayName": "Present Passwordless"
+          },
+          "9872d23f-58da-475c-84a7-c0a5fd231d92": {
+            "x": 3004,
+            "y": 134.5,
+            "connections": {
+              "outcome": "7318c2fe-6e08-4b67-92a0-84d4677c0a9d"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Get email"
+          },
+          "955fb416-3924-49e7-adae-fd93d82308df": {
+            "x": 1011,
+            "y": 57.5,
+            "connections": {
+              "false": "b17410d7-5692-4307-9599-e82927d77ed0",
+              "true": "8731e0a1-d29b-4d56-8fb2-023776e87727",
+              "unknownDevice": "b17410d7-5692-4307-9599-e82927d77ed0"
+            },
+            "nodeType": "DeviceMatchNode",
+            "displayName": "Device Match"
+          },
+          "df27de20-0ff4-48d2-af39-24c1c64db1a1": {
+            "x": 2748,
+            "y": 350.625,
+            "connections": {
+              "outcome": "e2ddfdc3-b82b-4792-b347-10f574e52894"
+            },
+            "nodeType": "AccountLockoutNode",
+            "displayName": "Account Lockout"
+          },
+          "01a9e3f4-7dbb-4b82-9bcd-a1953a1ff34f": {
+            "x": 2519,
+            "y": 469.1666666666667,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e2ddfdc3-b82b-4792-b347-10f574e52894"
+            },
+            "nodeType": "InnerTreeEvaluatorNode",
+            "displayName": "Password reset"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 70,
+            "y": 282.5
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 3978,
+            "y": 324.5
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 2873,
+            "y": 439.0833333333333
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "aed7aed7-27c7-40b1-b71f-6d7360ffc7e8": {
+          "_id": "aed7aed7-27c7-40b1-b71f-6d7360ffc7e8",
+          "_rev": "1387407970",
+          "messageYes": {
+            "en": "OK, take me to password reset"
+          },
+          "message": {},
+          "messageNo": {
+            "en": "I'll manage this later"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "50c447a2-caa8-4c53-be3a-772f7843a84a": {
+          "_id": "50c447a2-caa8-4c53-be3a-772f7843a84a",
+          "_rev": "1643807930",
+          "useUniversalIdForUsername": true,
+          "minimumPasswordLength": 8,
+          "mixedCaseForPasswordChangeMessages": false,
+          "_type": {
+            "_id": "IdentityStoreDecisionNode",
+            "name": "Identity Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "TRUE",
+              "displayName": "True"
+            },
+            {
+              "id": "FALSE",
+              "displayName": "False"
+            },
+            {
+              "id": "LOCKED",
+              "displayName": "Locked"
+            },
+            {
+              "id": "CANCELLED",
+              "displayName": "Cancelled"
+            },
+            {
+              "id": "EXPIRED",
+              "displayName": "Expired"
+            }
+          ]
+        },
+        "06a0ae71-03e2-4166-8165-61cb17b9bc70": {
+          "_id": "06a0ae71-03e2-4166-8165-61cb17b9bc70",
+          "_rev": "1827293920",
+          "defaultChoice": "Yes, I hate Passwords",
+          "choices": [
+            "Yes, I hate Passwords",
+            "No, I like my Password"
+          ],
+          "prompt": "Would you like to log in without a password in the future?",
+          "_type": {
+            "_id": "ChoiceCollectorNode",
+            "name": "Choice Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "Yes, I hate Passwords",
+              "displayName": "Yes, I hate Passwords"
+            },
+            {
+              "id": "No, I like my Password",
+              "displayName": "No, I like my Password"
+            }
+          ]
+        },
+        "104dfce6-04f6-4799-a115-7a92923814f9": {
+          "_id": "104dfce6-04f6-4799-a115-7a92923814f9",
+          "_rev": "1876655442",
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "IncrementLoginCountNode",
+            "name": "Increment Login Count",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "0119bd56-f279-4b64-92b5-e1120971182a": {
+          "_id": "0119bd56-f279-4b64-92b5-e1120971182a",
+          "_rev": "-1571574443",
+          "messageYes": {
+            "en": "Yes"
+          },
+          "message": {
+            "en": "Your account was locked, would you like an unlock email sent to the email of record?"
+          },
+          "messageNo": {
+            "en": "No"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "7318c2fe-6e08-4b67-92a0-84d4677c0a9d": {
+          "_id": "7318c2fe-6e08-4b67-92a0-84d4677c0a9d",
+          "_rev": "-1612892080",
+          "tree": "Baseline-UpdateMFA",
+          "_type": {
+            "_id": "InnerTreeEvaluatorNode",
+            "name": "Inner Tree Evaluator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "7d5ca0fb-d84d-4495-b9d1-0c3d15b075bb": {
+          "_id": "7d5ca0fb-d84d-4495-b9d1-0c3d15b075bb",
+          "_rev": "239248187",
+          "nodes": [
+            {
+              "_id": "4f1e63ac-4aeb-404c-bd01-db328259ea94",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "f1fb1d81-bf73-46a3-8f57-18d24653f31e",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {},
+          "stage": "{\"themeId\":\"9d4a6c52-4afb-4225-bd9b-d1722c8a0eeb\"}",
+          "pageHeader": {
+            "en": "no cookie"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "7bd1af2a-9c39-46c6-a72c-ed7d4988ca0b": {
+          "_id": "7bd1af2a-9c39-46c6-a72c-ed7d4988ca0b",
+          "_rev": "2034066792",
+          "enforceClientIp": false,
+          "persistentCookieName": "session-jwt",
+          "useHttpOnlyCookie": true,
+          "useSecureCookie": true,
+          "idleTimeout": 5,
+          "_type": {
+            "_id": "PersistentCookieDecisionNode",
+            "name": "Persistent Cookie Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "648ff389-62da-4d4b-b69c-788c448f39c2": {
+          "_id": "648ff389-62da-4d4b-b69c-788c448f39c2",
+          "_rev": "50028369",
+          "emailSuspendMessage": {
+            "en": "An email has been sent to the address you entered. Click the link in that email to proceed."
+          },
+          "emailTemplateName": "registration",
+          "identityAttribute": "userName",
+          "emailAttribute": "mail",
+          "objectLookup": false,
+          "_type": {
+            "_id": "EmailSuspendNode",
+            "name": "Email Suspend Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "94a1b0c7-86a6-4e4a-8b14-661b7f9d6182": {
+          "_id": "94a1b0c7-86a6-4e4a-8b14-661b7f9d6182",
+          "_rev": "338719054",
+          "presentAttribute": "frIndexedMultivalued2",
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "AttributePresentDecisionNode",
+            "name": "Attribute Present Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "04b22bd8-c664-47bd-869d-e050b74c8fe8": {
+          "_id": "04b22bd8-c664-47bd-869d-e050b74c8fe8",
+          "_rev": "789917565",
+          "interval": "EVERY",
+          "identityAttribute": "userName",
+          "amount": 2,
+          "_type": {
+            "_id": "LoginCountDecisionNode",
+            "name": "Login Count Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "bf104a38-9e86-4ca6-b6f2-3eaf0b4f77c6": {
+          "_id": "bf104a38-9e86-4ca6-b6f2-3eaf0b4f77c6",
+          "_rev": "-1320203895",
+          "deviceLocation": false,
+          "maximumSize": "3",
+          "deviceMetadata": true,
+          "message": {},
+          "_type": {
+            "_id": "DeviceProfileCollectorNode",
+            "name": "Device Profile Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "8731e0a1-d29b-4d56-8fb2-023776e87727": {
+          "_id": "8731e0a1-d29b-4d56-8fb2-023776e87727",
+          "_rev": "355246760",
+          "presentAttribute": "frIndexedMultivalued2",
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "AttributePresentDecisionNode",
+            "name": "Attribute Present Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "b17410d7-5692-4307-9599-e82927d77ed0": {
+          "_id": "b17410d7-5692-4307-9599-e82927d77ed0",
+          "_rev": "-775728654",
+          "nodes": [
+            {
+              "_id": "89c4dae5-8a11-4a79-a73d-db9c3d9ed50d",
+              "nodeType": "DisplayUserNameNode",
+              "displayName": "Display Username"
+            },
+            {
+              "_id": "44dc6014-0d9e-4fa5-9b6f-c2e8401a71cc",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {},
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "8cfabc1e-8079-4e36-b715-bb966a9a3b6a": {
+          "_id": "8cfabc1e-8079-4e36-b715-bb966a9a3b6a",
+          "_rev": "330268520",
+          "identityAttribute": "_id",
+          "identifier": "userName",
+          "_type": {
+            "_id": "IdentifyExistingUserNode",
+            "name": "Identify Existing User",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "e2ddfdc3-b82b-4792-b347-10f574e52894": {
+          "_id": "e2ddfdc3-b82b-4792-b347-10f574e52894",
+          "_rev": "1963172248",
+          "persistentCookieName": "session-jwt",
+          "useHttpOnlyCookie": true,
+          "useSecureCookie": true,
+          "idleTimeout": 5,
+          "maxLife": 5,
+          "_type": {
+            "_id": "SetPersistentCookieNode",
+            "name": "Set Persistent Cookie",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "3679be44-19b8-496e-aa8a-5d3c9c9294cd": {
+          "_id": "3679be44-19b8-496e-aa8a-5d3c9c9294cd",
+          "_rev": "-1368873051",
+          "maxSavedProfiles": 5,
+          "saveDeviceMetadata": true,
+          "saveDeviceLocation": false,
+          "variableName": "",
+          "_type": {
+            "_id": "DeviceSaveNode",
+            "name": "Device Profile Save",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "1ebb71ac-aa91-4346-8c83-3bab204a24ca": {
+          "_id": "1ebb71ac-aa91-4346-8c83-3bab204a24ca",
+          "_rev": "-2023373423",
+          "tree": "Baseline-Passwordless",
+          "_type": {
+            "_id": "InnerTreeEvaluatorNode",
+            "name": "Inner Tree Evaluator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "9872d23f-58da-475c-84a7-c0a5fd231d92": {
+          "_id": "9872d23f-58da-475c-84a7-c0a5fd231d92",
+          "_rev": "1515199521",
+          "nodes": [
+            {
+              "_id": "e3c4e7f8-7626-4de0-b0c8-be66f85e279b",
+              "nodeType": "AttributeCollectorNode",
+              "displayName": "Attribute Collector"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {
+            "en": "Great! For security, please enter your email"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "955fb416-3924-49e7-adae-fd93d82308df": {
+          "_id": "955fb416-3924-49e7-adae-fd93d82308df",
+          "_rev": "-989803285",
+          "script": "01e1a3c0-038b-4c16-956a-6c9d89328cff",
+          "acceptableVariance": 0,
+          "expiration": 30,
+          "useScript": false,
+          "_type": {
+            "_id": "DeviceMatchNode",
+            "name": "Device Match",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            },
+            {
+              "id": "unknownDevice",
+              "displayName": "Unknown Device"
+            }
+          ]
+        },
+        "df27de20-0ff4-48d2-af39-24c1c64db1a1": {
+          "_id": "df27de20-0ff4-48d2-af39-24c1c64db1a1",
+          "_rev": "283410263",
+          "lockAction": "UNLOCK",
+          "_type": {
+            "_id": "AccountLockoutNode",
+            "name": "Account Lockout",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "01a9e3f4-7dbb-4b82-9bcd-a1953a1ff34f": {
+          "_id": "01a9e3f4-7dbb-4b82-9bcd-a1953a1ff34f",
+          "_rev": "1614527901",
+          "tree": "ResetPassword",
+          "_type": {
+            "_id": "InnerTreeEvaluatorNode",
+            "name": "Inner Tree Evaluator",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "4f1e63ac-4aeb-404c-bd01-db328259ea94": {
+          "_id": "4f1e63ac-4aeb-404c-bd01-db328259ea94",
+          "_rev": "-570205037",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "f1fb1d81-bf73-46a3-8f57-18d24653f31e": {
+          "_id": "f1fb1d81-bf73-46a3-8f57-18d24653f31e",
+          "_rev": "667451367",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "89c4dae5-8a11-4a79-a73d-db9c3d9ed50d": {
+          "_id": "89c4dae5-8a11-4a79-a73d-db9c3d9ed50d",
+          "_rev": "-91147123",
+          "userName": "userName",
+          "identityAttribute": "userName",
+          "_type": {
+            "_id": "DisplayUserNameNode",
+            "name": "Display Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "44dc6014-0d9e-4fa5-9b6f-c2e8401a71cc": {
+          "_id": "44dc6014-0d9e-4fa5-9b6f-c2e8401a71cc",
+          "_rev": "1527051099",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "e3c4e7f8-7626-4de0-b0c8-be66f85e279b": {
+          "_id": "e3c4e7f8-7626-4de0-b0c8-be66f85e279b",
+          "_rev": "969694906",
+          "attributesToCollect": [
+            "mail"
+          ],
+          "identityAttribute": "userName",
+          "validateInputs": true,
+          "required": true,
+          "_type": {
+            "_id": "AttributeCollectorNode",
+            "name": "Attribute Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {
+        "registration": {
+          "_id": "emailTemplate/registration",
+          "defaultLocale": "en",
+          "enabled": true,
+          "from": "",
+          "html": {
+            "en": "<html><body><h3>This is your registration email.</h3><p><a href=\"{{object.resumeURI}}\">Email verification link</a></p></body></html>",
+            "fr": "<html><body><h3>Ceci est votre mail d'inscription.</h3><p><a href=\"{{object.resumeURI}}\">Lien de vérification email</a></p></body></html>"
+          },
+          "message": {
+            "en": "<html><head></head><body style=\"background-color: #324054; color: #5e6d82; padding: 60px; text-align: center;\"><div class=\"content\" style=\"background-color: #fff; border-radius: 4px; margin: 0 auto; padding: 48px; width: 235px;\"><h3>This is your registration email.</h3><p><a href=\"{{object.resumeURI}}\" style=\"text-decoration: none; color: #109cf1;\">Email verification link</a></p></div></body></html>",
+            "fr": "<html><head></head><body style=\"background-color: #324054; color: #5e6d82; padding: 60px; text-align: center;\"><div class=\"content\" style=\"background-color: #fff; border-radius: 4px; margin: 0 auto; padding: 48px; width: 235px;\"><h3>Ceci est votre mail d'inscription.</h3><p><a href=\"{{object.resumeURI}}\" style=\"text-decoration: none; color: #109cf1;\">Lien de vérification email</a></p></div></body></html>"
+          },
+          "mimeType": "text/html",
+          "styles": "body{background-color:#324054;color:#5e6d82;padding:60px;text-align:center}a{text-decoration:none;color:#109cf1}.content{background-color:#fff;border-radius:4px;margin:0 auto;padding:48px;width:235px}",
+          "subject": {
+            "en": "Register new account",
+            "fr": "Créer un nouveau compte"
+          }
+        }
+      },
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
