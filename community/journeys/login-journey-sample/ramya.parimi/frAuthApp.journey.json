@@ -1,0 +1,393 @@
+{
+  "meta": {
+    "origin": "https://openam-ic300-comramya.forgeblocks.com/platform/?realm=alpha#/journeys",
+    "exportedBy": "training-ops+comramya@forgerock.com",
+    "exportDate": "2023-06-27T20:23:32.117Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "frAuthApp"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "frAuthApp": {
+      "tree": {
+        "_id": "frAuthApp",
+        "_rev": "-1726466554",
+        "identityResource": "managed/alpha_user",
+        "uiConfig": {
+          "categories": "[]"
+        },
+        "entryNodeId": "ec09021f-ea8a-4e61-be0b-b320499f379a",
+        "nodes": {
+          "0a9f4a74-f13c-4d90-b5a2-b28bb5174555": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "354b6023-883d-412b-b47d-b5645704c4e3"
+            },
+            "displayName": "Data Store Decision",
+            "nodeType": "DataStoreDecisionNode",
+            "x": 455,
+            "y": 155
+          },
+          "354b6023-883d-412b-b47d-b5645704c4e3": {
+            "connections": {
+              "failureOutcome": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "notRegisteredOutcome": "64bfdfb5-5f08-4cc5-9cd5-e3ee32a01f8a",
+              "successOutcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "OATH Token Verifier",
+            "nodeType": "OathTokenVerifierNode",
+            "x": 988,
+            "y": 157.5
+          },
+          "50ed2608-e094-47cf-8092-1bbbbb08f54b": {
+            "connections": {
+              "outcome": "64bfdfb5-5f08-4cc5-9cd5-e3ee32a01f8a"
+            },
+            "displayName": "Get Authenticator App",
+            "nodeType": "GetAuthenticatorAppNode",
+            "x": 1998,
+            "y": 430.015625
+          },
+          "5d489efc-2c28-437e-9628-ad6365701c8a": {
+            "connections": {
+              "outcome": "354b6023-883d-412b-b47d-b5645704c4e3"
+            },
+            "displayName": "Recovery Code Display Node",
+            "nodeType": "RecoveryCodeDisplayNode",
+            "x": 651.359375,
+            "y": 329.015625
+          },
+          "64bfdfb5-5f08-4cc5-9cd5-e3ee32a01f8a": {
+            "connections": {
+              "getAppOutcome": "50ed2608-e094-47cf-8092-1bbbbb08f54b",
+              "optOutOutcome": "7de52eac-41c5-4d14-9e52-612993dfab3b",
+              "registerOutcome": "c4a84e76-fc55-4462-ba77-5ebfe87d8c82",
+              "skipOutcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "MFA Registration Options",
+            "nodeType": "MultiFactorRegistrationOptionsNode",
+            "x": 1654.4375,
+            "y": 187.015625
+          },
+          "7de52eac-41c5-4d14-9e52-612993dfab3b": {
+            "connections": {
+              "outcome": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Opt-out Multi-Factor Authentication",
+            "nodeType": "OptOutMultiFactorAuthenticationNode",
+            "x": 1922.4375,
+            "y": 162.015625
+          },
+          "af3f9a33-a1c0-4d2b-a2c3-8ff00b01f151": {
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "displayName": "Recovery Code Collector Decision",
+            "nodeType": "RecoveryCodeCollectorDecisionNode",
+            "x": 803.359375,
+            "y": 582.015625
+          },
+          "c4a84e76-fc55-4462-ba77-5ebfe87d8c82": {
+            "connections": {
+              "successOutcome": "5d489efc-2c28-437e-9628-ad6365701c8a"
+            },
+            "displayName": "OATH Registration",
+            "nodeType": "OathRegistrationNode",
+            "x": 1231,
+            "y": 443
+          },
+          "ec09021f-ea8a-4e61-be0b-b320499f379a": {
+            "connections": {
+              "outcome": "0a9f4a74-f13c-4d90-b5a2-b28bb5174555"
+            },
+            "displayName": "Page Node",
+            "nodeType": "PageNode",
+            "x": 210,
+            "y": 126.5
+          }
+        },
+        "description": " Journey that uses ForgeRock Authenticator Application for MFA",
+        "staticNodes": {
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 2020,
+            "y": 575.5
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1843,
+            "y": 891
+          },
+          "startNode": {
+            "x": 70,
+            "y": 172.5
+          }
+        },
+        "enabled": true
+      },
+      "nodes": {
+        "0a9f4a74-f13c-4d90-b5a2-b28bb5174555": {
+          "_id": "0a9f4a74-f13c-4d90-b5a2-b28bb5174555",
+          "_rev": "446953459",
+          "_type": {
+            "_id": "DataStoreDecisionNode",
+            "name": "Data Store Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "354b6023-883d-412b-b47d-b5645704c4e3": {
+          "_id": "354b6023-883d-412b-b47d-b5645704c4e3",
+          "_rev": "-1308340967",
+          "totpTimeInterval": 30,
+          "maximumAllowedClockDrift": 5,
+          "totpTimeSteps": 2,
+          "totpHashAlgorithm": "HMAC_SHA1",
+          "isRecoveryCodeAllowed": true,
+          "algorithm": "TOTP",
+          "hotpWindowSize": 100,
+          "_type": {
+            "_id": "OathTokenVerifierNode",
+            "name": "OATH Token Verifier",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "successOutcome",
+              "displayName": "Success"
+            },
+            {
+              "id": "failureOutcome",
+              "displayName": "Failure"
+            },
+            {
+              "id": "notRegisteredOutcome",
+              "displayName": "Not registered"
+            },
+            {
+              "id": "recoveryCodeOutcome",
+              "displayName": "Recovery Code"
+            }
+          ]
+        },
+        "50ed2608-e094-47cf-8092-1bbbbb08f54b": {
+          "_id": "50ed2608-e094-47cf-8092-1bbbbb08f54b",
+          "_rev": "-575886739",
+          "continueLabel": {},
+          "message": {},
+          "googleLink": "https://play.google.com/store/apps/details?id=com.forgerock.authenticator",
+          "appleLink": "https://itunes.apple.com/app/forgerock-authenticator/id1038442926",
+          "_type": {
+            "_id": "GetAuthenticatorAppNode",
+            "name": "Get Authenticator App",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "5d489efc-2c28-437e-9628-ad6365701c8a": {
+          "_id": "5d489efc-2c28-437e-9628-ad6365701c8a",
+          "_rev": "-2052671925",
+          "_type": {
+            "_id": "RecoveryCodeDisplayNode",
+            "name": "Recovery Code Display Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "64bfdfb5-5f08-4cc5-9cd5-e3ee32a01f8a": {
+          "_id": "64bfdfb5-5f08-4cc5-9cd5-e3ee32a01f8a",
+          "_rev": "-804333357",
+          "registerDeviceLabel": {},
+          "skipStepLabel": {},
+          "getAppLabel": {},
+          "message": {},
+          "getApp": true,
+          "optOutLabel": {},
+          "mandatory": false,
+          "_type": {
+            "_id": "MultiFactorRegistrationOptionsNode",
+            "name": "MFA Registration Options",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "registerOutcome",
+              "displayName": "Register"
+            },
+            {
+              "id": "getAppOutcome",
+              "displayName": "Get App"
+            },
+            {
+              "id": "skipOutcome",
+              "displayName": "Skip"
+            },
+            {
+              "id": "optOutOutcome",
+              "displayName": "Opt-out"
+            }
+          ]
+        },
+        "7de52eac-41c5-4d14-9e52-612993dfab3b": {
+          "_id": "7de52eac-41c5-4d14-9e52-612993dfab3b",
+          "_rev": "-637909616",
+          "_type": {
+            "_id": "OptOutMultiFactorAuthenticationNode",
+            "name": "Opt-out Multi-Factor Authentication",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "af3f9a33-a1c0-4d2b-a2c3-8ff00b01f151": {
+          "_id": "af3f9a33-a1c0-4d2b-a2c3-8ff00b01f151",
+          "_rev": "-587732243",
+          "recoveryCodeType": "OATH",
+          "_type": {
+            "_id": "RecoveryCodeCollectorDecisionNode",
+            "name": "Recovery Code Collector Decision",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "c4a84e76-fc55-4462-ba77-5ebfe87d8c82": {
+          "_id": "c4a84e76-fc55-4462-ba77-5ebfe87d8c82",
+          "_rev": "369170183",
+          "addChecksum": false,
+          "bgColor": "032b75",
+          "generateRecoveryCodes": true,
+          "truncationOffset": -1,
+          "algorithm": "TOTP",
+          "postponeDeviceProfileStorage": false,
+          "passwordLength": "SIX_DIGITS",
+          "totpTimeInterval": 30,
+          "scanQRCodeMessage": {},
+          "accountName": "USERNAME",
+          "issuer": "ForgeRock",
+          "minSharedSecretLength": 32,
+          "totpHashAlgorithm": "HMAC_SHA1",
+          "_type": {
+            "_id": "OathRegistrationNode",
+            "name": "OATH Registration",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "successOutcome",
+              "displayName": "Success"
+            },
+            {
+              "id": "failureOutcome",
+              "displayName": "Failure"
+            }
+          ]
+        },
+        "ec09021f-ea8a-4e61-be0b-b320499f379a": {
+          "_id": "ec09021f-ea8a-4e61-be0b-b320499f379a",
+          "_rev": "-613423578",
+          "nodes": [
+            {
+              "_id": "e373fe8f-f9aa-41cb-a789-93e678dfc0d6",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "5f31d806-660e-4f8c-8856-790c7817cfa5",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            }
+          ],
+          "pageDescription": {},
+          "pageHeader": {},
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "e373fe8f-f9aa-41cb-a789-93e678dfc0d6": {
+          "_id": "e373fe8f-f9aa-41cb-a789-93e678dfc0d6",
+          "_rev": "-1873039856",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "5f31d806-660e-4f8c-8856-790c7817cfa5": {
+          "_id": "5f31d806-660e-4f8c-8856-790c7817cfa5",
+          "_rev": "867258281",
+          "passwordAttribute": "password",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
